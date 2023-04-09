@@ -2,6 +2,8 @@ package com.example.ece_shopping;
 import java.util.HashMap;
 import java.util.Scanner;
 import javafx.application.Application;
+import javafx.stage.Stage;
+
 
 
 public class Main {
@@ -23,7 +25,19 @@ public class Main {
             String password = users.get(username);
             System.out.println("Nom d'utilisateur : " + username + ", Mot de passe : " + password);
         }
+
         Application.launch(LoginInterface.class, args);
+
+
+
+        /*
+        AdminInterface adminInterface = new AdminInterface();
+        try {
+            adminInterface.start(primaryStage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
         /*
         // Connexion
         Scanner scanner = new Scanner(System.in);

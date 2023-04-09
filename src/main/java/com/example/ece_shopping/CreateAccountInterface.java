@@ -38,6 +38,13 @@ public class CreateAccountInterface extends Application {
             if (password.equals(confirm_password)) {
                 if (UserSQL.creerUtilisateur(username, password)) {
                     System.out.println("Compte créé avec succès !");
+                    ClientInterface clientInterface = new ClientInterface();
+                    try {
+                        clientInterface.start(new Stage());
+                        primaryStage.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     System.out.println("Erreur lors de la création du compte.");
                 }
