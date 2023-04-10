@@ -51,4 +51,41 @@ public class SQL {
         return stockRempli;
     }
 
+    public static void ajouterArticle()
+    {
+        Connection conn = connect();
+        Scanner sc = new Scanner(System.in);
+
+        String nom;
+        double prix;
+        double prixBulk;
+        int quantiteBulk;
+        int quantite;
+        int id;
+
+        System.out.println("Nom de l'article : ");
+        nom = sc.nextLine();
+        System.out.println("Prix de l'article : ");
+        prix = sc.nextDouble();
+        System.out.println("Prix en gros de l'article : ");
+        prixBulk = sc.nextDouble();
+        System.out.println("Quantité de gros de l'article : ");
+        quantiteBulk = sc.nextInt();
+        System.out.println("Quantité de l'article : ");
+        quantite = sc.nextInt();
+        System.out.println("Id de l'article : ");
+        id = sc.nextInt();
+
+        try {
+            Statement stmt = conn.createStatement();
+            String query = "INSERT INTO article (Id, Nom, Prix, PrixBulk, QuantiteBulk, Quantite) VALUES (" + id + ", '" + nom + "', " + prix + ", " + prixBulk + ", " + quantiteBulk + ", " + quantite + ")";
+            stmt.executeUpdate(query);
+
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
