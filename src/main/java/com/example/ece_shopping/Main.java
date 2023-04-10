@@ -30,27 +30,5 @@ public class Main {
         Application.launch(LoginInterface.class, args);
 
 
-
-        /*
-        AdminInterface adminInterface = new AdminInterface();
-        try {
-            adminInterface.start(primaryStage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-
-        /*
-        // Connexion
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Entrez votre nom d'utilisateur : ");
-        String nomUtilisateur = scanner.nextLine();
-
-        System.out.println("Entrez votre mot de passe : ");
-        String motDePasse = scanner.nextLine();
-
-
-        */
-
     }
 }
