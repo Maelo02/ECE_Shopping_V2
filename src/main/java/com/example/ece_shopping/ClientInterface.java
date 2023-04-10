@@ -207,9 +207,6 @@ public class ClientInterface extends Application {
         cell16.setAlignment(Pos.CENTER);
 
 
-        /*Region space = new Region();
-        space.setPrefSize(30, 30);*/
-
 // Création du conteneur GridPane pour organiser les lignes et colonnes
         GridPane gridPane = new GridPane();
         //gridPane.setAlignment(Pos.CENTER);
