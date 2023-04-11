@@ -73,7 +73,7 @@ public class ClientInterface extends Application {
         Scene scene = new Scene(root, bounds.getWidth() * 0.8, bounds.getHeight() * 0.8); //80% de la taille de l'écran
 
         // Configuration de la fenêtre principale
-        primaryStage.setTitle("Page Client");
+        primaryStage.setTitle("Page Clients");
         primaryStage.setScene(scene);
         primaryStage.show();
 
