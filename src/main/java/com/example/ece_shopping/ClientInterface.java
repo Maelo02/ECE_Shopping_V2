@@ -116,6 +116,7 @@ public class ClientInterface extends Application {
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS); // Toujours afficher la barre de défilement verticale
         root.setCenter(scrollPane);
 
+        // aller push sale batard
     }
 }
 
