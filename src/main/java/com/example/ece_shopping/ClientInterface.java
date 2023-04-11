@@ -102,6 +102,7 @@ public class ClientInterface extends Application {
         gridPane.setHgap(10);
         gridPane.setVgap(30);
         gridPane.setTranslateY(30);
+        gridPane.setTranslateX(90);
 
         for (int i = 0; i < 20; i++) {
             int column = i % 4;
