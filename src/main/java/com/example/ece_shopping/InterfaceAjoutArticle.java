@@ -40,11 +40,14 @@ public class InterfaceAjoutArticle extends Application {
         Label label_quantiteBulk = new Label("Quantité Bulk :");
         Label label_id = new Label("Id :");
 
-        /**Text text = new Text("Ajouter un article");
+        Text text = new Text("Ajouter un article");
+
+        Button button = new Button("Ajouter");
+
         text.setFont(Font.font("Verdana", 20));
 
         HBox hbox = new HBox(text);
-        hbox.setAlignment(Pos.CENTER); */
+        hbox.setAlignment(Pos.CENTER);
 
 
         GridPane grid = new GridPane();
@@ -52,6 +55,8 @@ public class InterfaceAjoutArticle extends Application {
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
+
+        grid.add(hbox, 0, 0, 2, 1);
 
         grid.add(label_nom, 0, 1);
         grid.add(field_nom, 1, 1);
@@ -65,6 +70,19 @@ public class InterfaceAjoutArticle extends Application {
         grid.add(field_quantiteBulk, 1, 5);
         grid.add(label_id, 0, 6);
         grid.add(field_id, 1, 6);
+
+        grid.add(button, 1, 7);
+
+        button.setOnAction(event -> {
+            String nomF = field_nom.getText();
+            double prix = Double.parseDouble(field_prix.getText());
+            double prixBulk = Double.parseDouble(field_prixBulk.getText());
+            int quantite = Integer.parseInt(field_quantite.getText());
+            int quantiteBulk = Integer.parseInt(field_quantiteBulk.getText());
+            int id = Integer.parseInt(field_id.getText());
+
+            SQL.ajouterArticle(nomF, prix, prixBulk, quantite, quantiteBulk, id);
+        });
 
 
         // Créer une mise en page (layout) pour le champ de texte
