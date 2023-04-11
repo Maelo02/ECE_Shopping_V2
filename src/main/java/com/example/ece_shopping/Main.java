@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 public class Main {
     public static void main(String[] args) {
 
-        int l = 0;
         int i = 1;
         Stock stock1 = new Stock(SQL.remplirStock());
 

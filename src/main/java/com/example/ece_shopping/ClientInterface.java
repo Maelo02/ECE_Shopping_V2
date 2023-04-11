@@ -36,7 +36,6 @@ public class ClientInterface extends Application {
 
 
         // Création de la barre de recherche
-
         TextField searchField = new TextField();
         searchField.setPromptText("Rechercher...");
         searchField.setPrefWidth(800);
