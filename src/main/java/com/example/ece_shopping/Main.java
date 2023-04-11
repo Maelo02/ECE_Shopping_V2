@@ -10,14 +10,14 @@ public class Main {
     public static void main(String[] args) {
 
         int i = 1;
-        Stock stock1 = new Stock(SQL.remplirStock());
+       /* Stock stock1 = new Stock(SQL.remplirStock());
 
 
         for(int j = 0; j < 20; j++)
         {
             stock1.afficherStock(j,i);
             i++;
-        }
+        } */
 
         ListeCommande commande1 = new ListeCommande(SQL.remplirCommande());
 
@@ -35,9 +35,5 @@ public class Main {
         }
 
         Application.launch(LoginInterface.class, args);
-
-
-
-
     }
 }
