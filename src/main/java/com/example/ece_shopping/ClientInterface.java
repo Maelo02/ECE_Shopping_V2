@@ -17,6 +17,7 @@ import javafx.stage.Screen;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Spinner;
 
 public class ClientInterface extends Application {
 
@@ -77,14 +78,22 @@ public class ClientInterface extends Application {
         Button[] cartButtons = new Button[20];
         VBox[] cells = new VBox[20];
 
+        Spinner<Integer>[] spinners = new Spinner[20];
+
         for (int i = 0; i < 20; i++)
         {
+
+
             Image image = new Image("file:ressource/article_" + (i+1) + ".png");
             imageViews[i] = new ImageView(image);
             nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom() + "  " + (stock1.getStockArticle().get(i).getPrix()) + "€");
             cartButtons[i] = new Button("Ajouter au panier");
+
+            spinners[i] = new Spinner<>(1, 100, 1);
+
             cells[i] = new VBox();
-            cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
+            //cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
+            cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i], spinners[i]);
             cells[i].setAlignment(Pos.CENTER);
         }
 
