@@ -81,7 +81,7 @@ public class ClientInterface extends Application {
         {
             Image image = new Image("file:ressource/article_" + (i+1) + ".png");
             imageViews[i] = new ImageView(image);
-            nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
+            nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom() + "  " + (stock1.getStockArticle().get(i).getPrix()) + "€");
             cartButtons[i] = new Button("Ajouter au panier");
             cells[i] = new VBox();
             cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
