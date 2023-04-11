@@ -18,7 +18,7 @@ import javafx.stage.Screen;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.Region;
+
 
 
 public class ClientInterface extends Application {
@@ -41,18 +41,18 @@ public class ClientInterface extends Application {
         searchField.setPromptText("Rechercher...");
         searchField.setPrefWidth(800);
         searchField.setCenterShape(true);
-        searchField.setTranslateY(17);
+        searchField.setTranslateY(35);
 
 
 
 
         // Création du bouton "Mon compte"
         Button monCompteButton = new Button("Mon compte");
-        monCompteButton.setTranslateY(17);
+        monCompteButton.setTranslateY(35);
 
         // Création du bouton "Panier"
         Button cartButton = new Button("Panier");
-        cartButton.setTranslateY(17);
+        cartButton.setTranslateY(35);
 
         HBox topBox = new HBox();
         topBox.setPadding(new Insets(10));
@@ -95,6 +95,10 @@ public class ClientInterface extends Application {
         Image image14 = new Image("file:ressource/article_14.png");
         Image image15 = new Image("file:ressource/article_15.png");
         Image image16 = new Image("file:ressource/article_16.png");
+        Image image17 = new Image("file:ressource/article_17.png");
+        Image image18 = new Image("file:ressource/article_18.png");
+        Image image19 = new Image("file:ressource/article_19.png");
+        Image image20 = new Image("file:ressource/article_20.png");
 
 
 // Création des ImageView pour les images
@@ -114,6 +118,11 @@ public class ClientInterface extends Application {
         ImageView imageView14 = new ImageView(image14);
         ImageView imageView15 = new ImageView(image15);
         ImageView imageView16 = new ImageView(image16);
+        ImageView imageView17 = new ImageView(image17);
+        ImageView imageView18 = new ImageView(image18);
+        ImageView imageView19 = new ImageView(image19);
+        ImageView imageView20 = new ImageView(image20);
+
 
 
 // Création des Labels pour les noms
@@ -133,6 +142,14 @@ public class ClientInterface extends Application {
         Label nameLabel14 = new Label("Telephone 14");
         Label nameLabel15 = new Label("Telephone 15");
         Label nameLabel16 = new Label("Telephone 16");
+        Label nameLabel17 = new Label("Telephone 17");
+        Label nameLabel18 = new Label("Telephone 18");
+        Label nameLabel19 = new Label("Telephone 19");
+        Label nameLabel20 = new Label("Telephone 20");
+
+        Label nameLabel211 = new Label("");
+        Label nameLabel212 = new Label("");
+        Label nameLabel213 = new Label("");
 
 // Création des Buttons pour les boutons "ajouter au panier"
         Button cartButton1 = new Button("Ajouter au panier");
@@ -151,6 +168,10 @@ public class ClientInterface extends Application {
         Button cartButton14 = new Button("Ajouter au panier");
         Button cartButton15 = new Button("Ajouter au panier");
         Button cartButton16 = new Button("Ajouter au panier");
+        Button cartButton17 = new Button("Ajouter au panier");
+        Button cartButton18 = new Button("Ajouter au panier");
+        Button cartButton19 = new Button("Ajouter au panier");
+        Button cartButton20 = new Button("Ajouter au panier");
 
 
 // Création des conteneurs HBox pour chaque ligne
@@ -170,6 +191,11 @@ public class ClientInterface extends Application {
         VBox cell14 = new VBox();
         VBox cell15 = new VBox();
         VBox cell16 = new VBox();
+        VBox cell17 = new VBox();
+        VBox cell18 = new VBox();
+        VBox cell19 = new VBox();
+        VBox cell20 = new VBox();
+        VBox cell21 = new VBox();
 
 
 // Ajout des ImageView, Labels et Buttons aux HBox
@@ -189,6 +215,12 @@ public class ClientInterface extends Application {
         cell14.getChildren().addAll(imageView14, nameLabel14, cartButton14);
         cell15.getChildren().addAll(imageView15, nameLabel15, cartButton15);
         cell16.getChildren().addAll(imageView16, nameLabel16, cartButton16);
+        cell17.getChildren().addAll(imageView17, nameLabel17, cartButton17);
+        cell18.getChildren().addAll(imageView18, nameLabel18, cartButton18);
+        cell19.getChildren().addAll(imageView19, nameLabel19, cartButton19);
+        cell20.getChildren().addAll(imageView20, nameLabel20, cartButton20);
+        cell21.getChildren().addAll(nameLabel211, nameLabel212, nameLabel213);
+
         cell1.setAlignment(Pos.CENTER);
         cell2.setAlignment(Pos.CENTER);
         cell3.setAlignment(Pos.CENTER);
@@ -205,6 +237,11 @@ public class ClientInterface extends Application {
         cell14.setAlignment(Pos.CENTER);
         cell15.setAlignment(Pos.CENTER);
         cell16.setAlignment(Pos.CENTER);
+        cell17.setAlignment(Pos.CENTER);
+        cell18.setAlignment(Pos.CENTER);
+        cell19.setAlignment(Pos.CENTER);
+        cell20.setAlignment(Pos.CENTER);
+        cell21.setAlignment(Pos.CENTER);
 
 
 // Création du conteneur GridPane pour organiser les lignes et colonnes
@@ -212,7 +249,7 @@ public class ClientInterface extends Application {
         //gridPane.setAlignment(Pos.CENTER);
         gridPane.setHgap(10);
         gridPane.setVgap(30);
-        gridPane.setTranslateY(20);
+        gridPane.setTranslateY(30);
 // Ajout des HBox au GridPane
         gridPane.add(cell1, 0, 0);
         gridPane.add(cell2, 1, 0);
@@ -230,13 +267,19 @@ public class ClientInterface extends Application {
         gridPane.add(cell14, 1, 3);
         gridPane.add(cell15, 2, 3);
         gridPane.add(cell16, 3, 3);
+        gridPane.add(cell17, 0, 4);
+        gridPane.add(cell18, 1, 4);
+        gridPane.add(cell19, 2, 4);
+        gridPane.add(cell20, 3, 4);
+        gridPane.add(cell21, 0, 5, 4, 1);
 
 
 
-        ScrollPane scrollPane = new ScrollPane(gridPane);
+       ScrollPane scrollPane = new ScrollPane(gridPane);
         root.setCenter(scrollPane);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS); // Toujours afficher la barre de défilement verticale
         root.setCenter(scrollPane);
+
 
     }
 }
