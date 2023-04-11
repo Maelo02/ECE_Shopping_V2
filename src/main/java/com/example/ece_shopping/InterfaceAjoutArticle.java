@@ -6,21 +6,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.geometry.Pos;
-import javafx.scene.control.ScrollPane;
-import javafx.application.Application;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 public class InterfaceAjoutArticle extends Application {
 
@@ -43,6 +36,7 @@ public class InterfaceAjoutArticle extends Application {
         Text text = new Text("Ajouter un article");
 
         Button button = new Button("Ajouter");
+        Button button_retour = new Button("Retour");
 
         text.setFont(Font.font("Verdana", 20));
 
@@ -72,6 +66,7 @@ public class InterfaceAjoutArticle extends Application {
         grid.add(field_id, 1, 6);
 
         grid.add(button, 1, 7);
+        grid.add(button_retour, 0, 7);
 
         button.setOnAction(event -> {
             String nomF = field_nom.getText();
@@ -82,15 +77,25 @@ public class InterfaceAjoutArticle extends Application {
             int id = Integer.parseInt(field_id.getText());
 
             SQL.ajouterArticle(nomF, prix, prixBulk, quantite, quantiteBulk, id);
-        });
 
+            field_nom.clear();
+            field_prix.clear();
+            field_prixBulk.clear();
+            field_quantite.clear();
+            field_quantiteBulk.clear();
+            field_id.clear();
+        });
 
         // Créer une mise en page (layout) pour le champ de texte
         StackPane root = new StackPane();
         root.getChildren().add(grid);
 
         // Créer une scène
-        Scene scene = new Scene(root, 400, 300);
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getVisualBounds();
+
+        // Création de la scène avec une taille proportionnelle à celle de l'écran
+        Scene scene = new Scene(root, bounds.getWidth() * 0.8, bounds.getHeight() * 0.8); //80% de la taille de l'écran
 
         // Définir la scène et l'afficher
         primaryStage.setScene(scene);
