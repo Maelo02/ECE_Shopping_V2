@@ -51,30 +51,10 @@ public class SQL {
         return stockRempli;
     }
 
-    public static void ajouterArticle()
+    public static void ajouterArticle(String nom, double prix, double prixBulk, int quantiteBulk, int quantite, int id)
     {
         Connection conn = connect();
         Scanner sc = new Scanner(System.in);
-
-        String nom;
-        double prix;
-        double prixBulk;
-        int quantiteBulk;
-        int quantite;
-        int id;
-
-        System.out.println("Nom de l'article : ");
-        nom = sc.nextLine();
-        System.out.println("Prix de l'article : ");
-        prix = sc.nextDouble();
-        System.out.println("Prix en gros de l'article : ");
-        prixBulk = sc.nextDouble();
-        System.out.println("Quantité de gros de l'article : ");
-        quantiteBulk = sc.nextInt();
-        System.out.println("Quantité de l'article : ");
-        quantite = sc.nextInt();
-        System.out.println("Id de l'article : ");
-        id = sc.nextInt();
 
         try {
             Statement stmt = conn.createStatement();
