@@ -29,7 +29,7 @@ public class LoginInterface extends Application {
         PasswordField field_password = new PasswordField();
         Button button_login = new Button("Se connecter");
         Button button_signup = new Button("Créer un compte");
-        ImageView logo = new ImageView("file:ressources/logo.png");
+        ImageView logo = new ImageView("file:ressource/logo.png");
         logo.setFitWidth(140);
         logo.setFitHeight(100);
 

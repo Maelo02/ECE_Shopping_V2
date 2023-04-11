@@ -29,10 +29,10 @@ public class ClientInterface extends Application {
         Label label = new Label("Page Client");
 
         // Création de l'image du logo
-        Image logoImage = new Image("file:ressources/logo.png");
+        Image logoImage = new Image("file:ressource/logo.png");
         ImageView logoImageView = new ImageView(logoImage);
-        logoImageView.setFitHeight(60);
-        logoImageView.setFitWidth(200);
+        logoImageView.setFitHeight(100);
+        logoImageView.setFitWidth(140);
 
 
         // Création de la barre de recherche
@@ -79,22 +79,22 @@ public class ClientInterface extends Application {
         primaryStage.show();
 
         // Création des images
-        Image image1 = new Image("file:ressources/article_1.png");
-        Image image2 = new Image("file:ressources/article_2.png");
-        Image image3 = new Image("file:ressources/article_3.png");
-        Image image4 = new Image("file:ressources/article_4.png");
-        Image image5 = new Image("file:ressources/article_5.png");
-        Image image6 = new Image("file:ressources/article_6.png");
-        Image image7 = new Image("file:ressources/article_7.png");
-        Image image8 = new Image("file:ressources/article_8.png");
-        Image image9 = new Image("file:ressources/article_9.png");
-        Image image10 = new Image("file:ressources/article_10.png");
-        Image image11 = new Image("file:ressources/article_11.png");
-        Image image12 = new Image("file:ressources/article_12.png");
-        Image image13 = new Image("file:ressources/article_13.png");
-        Image image14 = new Image("file:ressources/article_14.png");
-        Image image15 = new Image("file:ressources/article_15.png");
-        Image image16 = new Image("file:ressources/article_16.png");
+        Image image1 = new Image("file:ressource/article_1.png");
+        Image image2 = new Image("file:ressource/article_2.png");
+        Image image3 = new Image("file:ressource/article_3.png");
+        Image image4 = new Image("file:ressource/article_4.png");
+        Image image5 = new Image("file:ressource/article_5.png");
+        Image image6 = new Image("file:ressource/article_6.png");
+        Image image7 = new Image("file:ressource/article_7.png");
+        Image image8 = new Image("file:ressource/article_8.png");
+        Image image9 = new Image("file:ressource/article_9.png");
+        Image image10 = new Image("file:ressource/article_10.png");
+        Image image11 = new Image("file:ressource/article_11.png");
+        Image image12 = new Image("file:ressource/article_12.png");
+        Image image13 = new Image("file:ressource/article_13.png");
+        Image image14 = new Image("file:ressource/article_14.png");
+        Image image15 = new Image("file:ressource/article_15.png");
+        Image image16 = new Image("file:ressource/article_16.png");
 
 
 // Création des ImageView pour les images

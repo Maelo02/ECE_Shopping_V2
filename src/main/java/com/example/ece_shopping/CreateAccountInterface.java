@@ -30,7 +30,7 @@ public class CreateAccountInterface extends Application {
         PasswordField field_confirm_password = new PasswordField();
         Button button_create_account = new Button("Créer un compte");
         Button button_back = new Button("Retour");
-        ImageView logo = new ImageView("file:ressources/logo.png");
+        ImageView logo = new ImageView("file:ressource/logo.png");
         logo.setFitWidth(140);
         logo.setFitHeight(100);
 
