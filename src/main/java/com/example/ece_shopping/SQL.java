@@ -51,14 +51,56 @@ public class SQL {
         return stockRempli;
     }
 
-    public static void ajouterArticle(String nom, double prix, double prixBulk, int quantiteBulk, int quantite, int id)
+    public static ArrayList<Commande> remplirCommande()
+    {
+        Connection conn = null;
+
+        try {
+            String userName = "root";
+            String password = "root";
+            String url = "jdbc:mysql://localhost:8889/commande";
+
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            conn = DriverManager.getConnection(url, userName, password);
+
+            System.out.println("Database connection established");
+
+        } catch (Exception e) {
+
+            System.err.println("Cannot connect to database server");
+            e.printStackTrace();
+        }
+        ArrayList<Commande> commandeRempli = new ArrayList<Commande>();
+
+
+        try {
+            Statement stmt = conn.createStatement();
+            String query = "SELECT * FROM commande";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+                Commande commande = new Commande(rs.getInt("numero_commande"),rs.getDate("date"), rs.getString("utilisateur"), rs.getInt("nombre_articles"), rs.getFloat("prix_total"));
+                commandeRempli.add(commande);
+            }
+
+            conn.close();
+        } catch (SQLException e) {
+            System.err.println("Error executing query");
+            e.printStackTrace();
+        }
+
+        return commandeRempli;
+    }
+
+
+    public static void ajouterArticle(String nomF, double prix, double prixBulk, int quantite, int quantiteBulk, int id)
     {
         Connection conn = connect();
         Scanner sc = new Scanner(System.in);
 
         try {
             Statement stmt = conn.createStatement();
-            String query = "INSERT INTO article (Id, Nom, Prix, PrixBulk, QuantiteBulk, Quantite) VALUES (" + id + ", '" + nom + "', " + prix + ", " + prixBulk + ", " + quantiteBulk + ", " + quantite + ")";
+            String query = "INSERT INTO article (Id, Nom, Prix, PrixBulk, QuantiteBulk, Quantite) VALUES (" + id + ", '" + nomF + "', " + prix + ", " + prixBulk + ", " + quantiteBulk + ", " + quantite + ")";
             stmt.executeUpdate(query);
 
             conn.close();
