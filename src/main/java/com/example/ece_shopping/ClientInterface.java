@@ -64,8 +64,9 @@ public class ClientInterface extends Application {
         root.setTop(topBox);
         root.setCenter(label);
 
+
         // Création de la scène
-            //Scene scene = new Scene(root, 1600, 900);
+        // Scene scene = new Scene(root, 1600, 900);
         // Récupération de la taille de l'écran
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
@@ -246,10 +247,12 @@ public class ClientInterface extends Application {
 
 // Création du conteneur GridPane pour organiser les lignes et colonnes
         GridPane gridPane = new GridPane();
-        //gridPane.setAlignment(Pos.CENTER);
-        gridPane.setHgap(10);
+        gridPane.setHgap(20);
         gridPane.setVgap(30);
         gridPane.setTranslateY(30);
+        gridPane.setTranslateX(80);
+        //gridPane.setAlignment(Pos.CENTER);
+       // root.setCenter(gridPane);
 // Ajout des HBox au GridPane
         gridPane.add(cell1, 0, 0);
         gridPane.add(cell2, 1, 0);
@@ -272,6 +275,7 @@ public class ClientInterface extends Application {
         gridPane.add(cell19, 2, 4);
         gridPane.add(cell20, 3, 4);
         gridPane.add(cell21, 0, 5, 4, 1);
+
 
 
 
