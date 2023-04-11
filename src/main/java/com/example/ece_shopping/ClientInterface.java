@@ -31,11 +31,12 @@ public class ClientInterface extends Application {
         // Création de l'image du logo
         Image logoImage = new Image("file:ressources/logo.png");
         ImageView logoImageView = new ImageView(logoImage);
-        logoImageView.setFitHeight(100);
-        logoImageView.setFitWidth(140);
+        logoImageView.setFitHeight(60);
+        logoImageView.setFitWidth(200);
 
 
         // Création de la barre de recherche
+
         TextField searchField = new TextField();
         searchField.setPromptText("Rechercher...");
         searchField.setPrefWidth(800);
@@ -73,7 +74,7 @@ public class ClientInterface extends Application {
         Scene scene = new Scene(root, bounds.getWidth() * 0.8, bounds.getHeight() * 0.8); //80% de la taille de l'écran
 
         // Configuration de la fenêtre principale
-        primaryStage.setTitle("Page Client");
+        primaryStage.setTitle("Page Clients");
         primaryStage.setScene(scene);
         primaryStage.show();
 
