@@ -21,10 +21,11 @@ public class Main {
 
         ListeCommande commande1 = new ListeCommande(SQL.remplirCommande());
 
-        for(int j = 0; j < 20; j++)
+        for(int j = 0; j < commande1.getListeCommande().size(); j++)
         {
-            //commande1.afficherCommande(j);
+            commande1.afficherCommande(j);
         }
+
 
         HashMap<String, String> users = UserSQL.getUsers();
 
