@@ -17,7 +17,6 @@ public class Stock {
 
     public void afficherStock(int i,int j)
     {
-        //System.out.println(getStockArticle().get(i).getNom());
         System.out.println("--------------------Article " + j + "--------------------");
         System.out.println("Id : " + getStockArticle().get(i).getId());
         System.out.println("Nom : " +getStockArticle().get(i).getNom());

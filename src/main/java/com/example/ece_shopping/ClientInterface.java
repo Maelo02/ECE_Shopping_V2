@@ -18,6 +18,9 @@ import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 public class ClientInterface extends Application {
 
@@ -25,7 +28,7 @@ public class ClientInterface extends Application {
     public void start(Stage primaryStage) {
         // Création d'un label avec le texte "Page Client"
         Label label = new Label("Page Client");
-
+        int l = 0;
         Stock stock1 = new Stock(SQL.remplirStock());
 
         // Création de l'image du logo
@@ -82,8 +85,6 @@ public class ClientInterface extends Application {
 
         for (int i = 0; i < 20; i++)
         {
-
-
             Image image = new Image("file:ressource/article_" + (i+1) + ".png");
             imageViews[i] = new ImageView(image);
             nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom() + "  " + (stock1.getStockArticle().get(i).getPrix()) + "€");
@@ -95,6 +96,10 @@ public class ClientInterface extends Application {
             //cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
             cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i], spinners[i]);
             cells[i].setAlignment(Pos.CENTER);
+        }
+
+        for (int i = 0; i < cartButtons.length; i++) {
+            cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle());
         }
 
         Label nameLabel211 = new Label("");
@@ -126,7 +131,6 @@ public class ClientInterface extends Application {
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS); // Toujours afficher la barre de défilement verticale
         root.setCenter(scrollPane);
 
-        // aller push sale batard
     }
 }
 

@@ -2,14 +2,16 @@ package com.example.ece_shopping;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
+
 
 public class AdminInterface extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
         // Création d'un label avec le texte "Page Admin"
         Label label = new Label("Page Admin");
 
@@ -25,6 +27,7 @@ public class AdminInterface extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
-
 }
+
+
+
