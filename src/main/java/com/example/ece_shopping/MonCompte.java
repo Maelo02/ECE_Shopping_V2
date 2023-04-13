@@ -29,9 +29,8 @@ public class MonCompte extends Application {
 
             // Création d'un label avec le texte "Mon Compte"
             Label Pageadmin = new Label("Mon Compte");
-            Pageadmin.setFont(new Font("Arial", 20));
+            Pageadmin.setStyle("-fx-font-size: 20px;");
             Pageadmin.translateYProperty().set(-170);
-
 
             // Création de l'image du logo
             Image logoImage = new Image("file:ressource/logo.png");
@@ -43,8 +42,6 @@ public class MonCompte extends Application {
             imagelogo.setTop(logoImageView);
             imagelogo.setCenter(Pageadmin);
             BorderPane.setAlignment(logoImageView, Pos.TOP_CENTER);
-
-
 
             //String field_user = username;
             //String field_mdp = password;
@@ -79,8 +76,8 @@ public class MonCompte extends Application {
 
             // Créer une mise en page (layout) pour le champ de texte
             StackPane root = new StackPane();
-            root.getChildren().add(grid);
             root.getChildren().add(imagelogo);
+            root.getChildren().add(grid);
 
             // Créer une scène
             Screen screen = Screen.getPrimary();
