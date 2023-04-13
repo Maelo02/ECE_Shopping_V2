@@ -1,5 +1,6 @@
 package com.example.ece_shopping;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class ListeCommande {
@@ -23,4 +24,21 @@ public class ListeCommande {
         System.out.println("nombre d'articles : " + getListeCommande().get(i).getNombre_articles());
         System.out.println("prix total : " + getListeCommande().get(i).getPrix_total());
     }
+
+    public void ajouterCommande(int numero_commande, Date date, String utilisateur, int nombre_articles, float prix_total) {
+        Commande nouvelleCommande = new Commande(numero_commande, date, utilisateur, nombre_articles, prix_total);
+        SQL.ajouterCommandeSQL(nouvelleCommande);
+        listeCommande.add(nouvelleCommande);
+    }
+    public void suppCommande(int numero_commande) {
+        SQL.suppCommandeSQL(numero_commande);
+        for(int i = 0; i < listeCommande.size(); i++)
+        {
+            if(listeCommande.get(i).getNumero() == numero_commande)
+            {
+                listeCommande.remove(i);
+            }
+        }
+    }
+
 }
