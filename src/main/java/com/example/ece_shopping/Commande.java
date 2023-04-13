@@ -1,9 +1,7 @@
 package com.example.ece_shopping;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-import java.sql.*;
 
 public class Commande {
     private int numero;
@@ -23,8 +21,8 @@ public class Commande {
     public int getNumero() {
         return numero;
     }
-    public Date getDate() {
-        return date;
+    public java.sql.Date getDate() {
+        return (java.sql.Date) date;
     }
     public String getUtilisateur() {
         return utilisateur;
