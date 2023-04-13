@@ -18,6 +18,10 @@ import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitMenuButton;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 
 public class ClientInterface extends Application {
@@ -63,10 +67,20 @@ public class ClientInterface extends Application {
         Button cartButton = new Button("Panier");
         cartButton.setTranslateY(35);
 
+        // Création du bouton avec un menu déroulant "Filtrer"
+        SplitMenuButton filtreButton = new SplitMenuButton();
+        filtreButton.setText("Filtrer");
+        MenuItem item1 = new MenuItem("A a Z");
+        MenuItem item2 = new MenuItem("Z a A");
+        MenuItem item3 = new MenuItem("Prix croissant");
+        MenuItem item4 = new MenuItem("Prix decroissant");
+        filtreButton.getItems().addAll(item1, item2, item3, item4);
+        filtreButton.setTranslateY(35);
+
         HBox topBox = new HBox();
         topBox.setPadding(new Insets(10));
         topBox.setSpacing(10);
-        topBox.getChildren().addAll(logoImageView, searchField, monCompteButton, cartButton);
+        topBox.getChildren().addAll(logoImageView, searchField, filtreButton, monCompteButton, cartButton);
 
         // Création d'un conteneur de type BorderPane pour organiser la mise en page
         BorderPane root = new BorderPane();
@@ -98,6 +112,31 @@ public class ClientInterface extends Application {
             cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
             cells[i].setAlignment(Pos.CENTER);
         }
+
+        item1.setOnAction(event -> {
+            System.out.println("Option 1 sélectionnée");
+            stock1.getStockArticle().sort((a1, a2) -> Double.compare(a1.getPrix(), a2.getPrix()));
+
+            for (int i = 0; i < 20; i++)
+            {
+                Image image = new Image("file:ressource/article_" + (i+1) + ".png");
+                imageViews[i] = new ImageView(image);
+                nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
+                cartButtons[i] = new Button("Ajouter au panier");
+
+                cells[i] = new VBox();
+                cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
+                cells[i].setAlignment(Pos.CENTER);
+            }
+        });
+        item2.setOnAction(event -> {
+            System.out.println("Option 2 sélectionnée");
+            // Insérer ici le code à exécuter pour l'option 2
+        });
+        item3.setOnAction(event -> {
+            System.out.println("Option 3 sélectionnée");
+            // Insérer ici le code à exécuter pour l'option 3
+        });
 
         for (int i = 0; i < cartButtons.length; i++) {
             int j = i;
