@@ -1,10 +1,16 @@
 package com.example.ece_shopping;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
 
 
 public class AdminInterface extends Application {
@@ -13,19 +19,47 @@ public class AdminInterface extends Application {
     public void start(Stage primaryStage) {
 
         // Création d'un label avec le texte "Page Admin"
-        Label label = new Label("Page Admin");
+        Label Pageadmin = new Label("Page Admin");
+        Pageadmin.setStyle("-fx-font-size: 20px;");
+        Pageadmin.translateYProperty().set(-100);
 
-        // Création d'un conteneur de type StackPane pour afficher le label au centre de la fenêtre
-        StackPane root = new StackPane();
-        root.getChildren().add(label);
+        // Création de l'image du logo
+        Image logoImage = new Image("file:ressource/logo.png");
+        ImageView logoImageView = new ImageView(logoImage);
+        logoImageView.setFitHeight(200);
+        logoImageView.setFitWidth(280);
 
-        // Création de la scène
-        Scene scene = new Scene(root, 600, 400);
+
+
+        // Création des boutons "Mon compte", "Stock" et "Commande"
+        Button monCompteButton = new Button("Mon compte");
+        Button stockButton = new Button("Stock");
+        Button cartButton = new Button("Commande");
+
+        // Création d'un conteneur de type VBox pour organiser la mise en page des boutons
+        VBox buttonBox = new VBox(10, monCompteButton, stockButton, cartButton);
+        buttonBox.setAlignment(Pos.CENTER);
+        buttonBox.setPadding(new Insets(20));
+        buttonBox.translateYProperty().set(-150);
+
+        // Création d'un conteneur de type BorderPane pour organiser la mise en page
+        BorderPane root = new BorderPane();
+        root.setTop(logoImageView);
+        root.setCenter(Pageadmin);
+        root.setBottom(buttonBox);
+        BorderPane.setAlignment(logoImageView, Pos.TOP_CENTER);
+
+        monCompteButton.setOnAction(e -> MonCompte.affichermoncompte());
+
+
+        Scene newScene = new Scene(root, 400, 600);
 
         // Configuration de la fenêtre principale
-        primaryStage.setTitle("Page Admin");
-        primaryStage.setScene(scene);
+        primaryStage.setTitle("Page Clients");
+        primaryStage.setScene(newScene);
         primaryStage.show();
+
+
     }
 }
 
