@@ -18,18 +18,28 @@ import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Spinner;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
+
 
 public class ClientInterface extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
         // Création d'un label avec le texte "Page Client"
         Label label = new Label("Page Client");
         int l = 0;
         Stock stock1 = new Stock(SQL.remplirStock());
+
+        Label nameLabel211 = new Label("");
+        Label nameLabel212 = new Label("");
+        Label nameLabel213 = new Label("");
+
+        VBox cell21 = new VBox();
+
+        ImageView[] imageViews = new ImageView[20];
+        Label[] nameLabels = new Label[20];
+        Button[] cartButtons = new Button[20];
+        VBox[] cells = new VBox[20];
 
         // Création de l'image du logo
         Image logoImage = new Image("file:ressource/logo.png");
@@ -75,44 +85,29 @@ public class ClientInterface extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-
-        ImageView[] imageViews = new ImageView[20];
-        Label[] nameLabels = new Label[20];
-        Button[] cartButtons = new Button[20];
-        VBox[] cells = new VBox[20];
-
         Spinner<Integer>[] spinners = new Spinner[20];
 
         for (int i = 0; i < 20; i++)
         {
             Image image = new Image("file:ressource/article_" + (i+1) + ".png");
             imageViews[i] = new ImageView(image);
-            nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom() + "  " + (stock1.getStockArticle().get(i).getPrix()) + "€");
+            nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
             cartButtons[i] = new Button("Ajouter au panier");
 
-            spinners[i] = new Spinner<>(1, 100, 1);
-
             cells[i] = new VBox();
-            //cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
-            cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i], spinners[i]);
+            cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
             cells[i].setAlignment(Pos.CENTER);
         }
 
         for (int i = 0; i < cartButtons.length; i++) {
-            cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle());
+            int j = i;
+            cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(j,stock1.getStockArticle().get(j)));
         }
 
-        Label nameLabel211 = new Label("");
-        Label nameLabel212 = new Label("");
-        Label nameLabel213 = new Label("");
-
-        VBox cell21 = new VBox();
 
         cell21.getChildren().addAll(nameLabel211, nameLabel212, nameLabel213);
-
-        // Création du conteneur GridPane pour organiser les lignes et colonnes
         GridPane gridPane = new GridPane();
-        //gridPane.setAlignment(Pos.CENTER);
+
         gridPane.setHgap(10);
         gridPane.setVgap(30);
         gridPane.setTranslateY(30);
@@ -130,7 +125,6 @@ public class ClientInterface extends Application {
         root.setCenter(scrollPane);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS); // Toujours afficher la barre de défilement verticale
         root.setCenter(scrollPane);
-
     }
 }
 
