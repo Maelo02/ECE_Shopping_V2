@@ -29,16 +29,15 @@ public class AdminInterface extends Application {
         logoImageView.setFitHeight(200);
         logoImageView.setFitWidth(280);
 
-
-
-        // Création des boutons "Mon compte", "Stock" et "Commande"
-        Button monCompteButton = new Button("Mon compte");
+        // Création des boutons "Mon compte", "Stock" , "Commande", "Ajouter un article" et "Compte client"
+        Button listeDesComptes = new Button("Liste des comptes");
         Button stockButton = new Button("Stock");
         Button commandeButton = new Button("Commande");
         Button ajouterarticle = new Button("Ajouter un article");
+        Button compteclient = new Button("Compte client");
 
         // Création d'un conteneur de type VBox pour organiser la mise en page des boutons
-        VBox buttonBox = new VBox(10, monCompteButton, stockButton, commandeButton, ajouterarticle);
+        VBox buttonBox = new VBox(10, listeDesComptes, stockButton, commandeButton, ajouterarticle,compteclient);
         buttonBox.setAlignment(Pos.CENTER);
         buttonBox.setPadding(new Insets(20));
         buttonBox.translateYProperty().set(-150);
@@ -50,10 +49,21 @@ public class AdminInterface extends Application {
         root.setBottom(buttonBox);
         BorderPane.setAlignment(logoImageView, Pos.TOP_CENTER);
 
-        monCompteButton.setOnAction(e -> MonCompte.affichermoncompte());
+        listeDesComptes.setOnAction(e -> ListeCompteInterface.afficherListeDesComptes());
         stockButton.setOnAction(e -> Stockadmin.voirstock());
         //commandeButton.setOnAction(e -> Commandeadmin.affichercommande());
         ajouterarticle.setOnAction(e -> InterfaceAjoutArticle.ajouterarticle());
+
+        compteclient.setOnAction(e -> {
+            try {
+                new ClientInterface().start(new Stage());
+                primaryStage.close();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        });
+
+
 
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();

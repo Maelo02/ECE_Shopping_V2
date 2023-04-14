@@ -7,26 +7,20 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.util.HashMap;
-
-public class MonCompte extends Application {
+public class MonCompteInterface extends Application {
 
 
     public void start(Stage primaryStage) {
     }
-        public static void affichermoncompte()
+        public static void afficherMonCompte()
         {
 
-            System.out.println(UserSQL.getUsers());
             // Création d'un label avec le texte "Mon Compte"
             Label Pageadmin = new Label("Mon Compte");
             Pageadmin.setStyle("-fx-font-size: 20px;");
@@ -43,8 +37,14 @@ public class MonCompte extends Application {
             imagelogo.setCenter(Pageadmin);
             BorderPane.setAlignment(logoImageView, Pos.TOP_CENTER);
 
-            //String field_user = username;
-            //String field_mdp = password;
+           // String field_user = UserSQL.getNomUtilisateur();
+           // String field_mdp = UserSQL.getMotDePasse();
+
+            //System.out.println(field_user);
+            //System.out.println(field_mdp);
+
+            // String field_user = UserSQL.getUsers();
+            // String field_mdp = password;
             Label label_nom = new Label("Nom d'utilisateur :");
             Label label_prix = new Label("Mot De Passe :");
 
@@ -62,9 +62,9 @@ public class MonCompte extends Application {
             grid.add(hbox, 0, 0, 2, 1);
 
             grid.add(label_nom, 0, 1);
-            //grid.add(field_user, 1, 1);
+            // grid.add(field_user, 1, 1);
             grid.add(label_prix, 0, 2);
-            //grid.add(field_mdp, 1, 2);
+            // grid.add(field_mdp, 1, 2);
 
             Stage newStage = new Stage();
 
@@ -83,7 +83,6 @@ public class MonCompte extends Application {
             Screen screen = Screen.getPrimary();
             Rectangle2D bounds = screen.getVisualBounds();
             Scene newScene = new Scene(root, bounds.getWidth() * 0.8, bounds.getHeight() * 0.8); //80% de la taille de l'écran
-
 
             newStage.setScene(newScene);
             newStage.show();
