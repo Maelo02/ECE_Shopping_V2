@@ -26,7 +26,7 @@ public class MonCompte extends Application {
         public static void affichermoncompte()
         {
 
-
+            System.out.println(UserSQL.getUsers());
             // Création d'un label avec le texte "Mon Compte"
             Label Pageadmin = new Label("Mon Compte");
             Pageadmin.setStyle("-fx-font-size: 20px;");
@@ -82,8 +82,8 @@ public class MonCompte extends Application {
             // Créer une scène
             Screen screen = Screen.getPrimary();
             Rectangle2D bounds = screen.getVisualBounds();
+            Scene newScene = new Scene(root, bounds.getWidth() * 0.8, bounds.getHeight() * 0.8); //80% de la taille de l'écran
 
-            Scene newScene = new Scene(root, 400, 600);
 
             newStage.setScene(newScene);
             newStage.show();

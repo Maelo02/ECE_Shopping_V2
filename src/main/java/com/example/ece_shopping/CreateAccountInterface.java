@@ -18,7 +18,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class CreateAccountInterface extends Application {
-
+    private String username;
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Création des éléments de l'interface
@@ -36,13 +36,14 @@ public class CreateAccountInterface extends Application {
 
         // Ajout d'un gestionnaire de clic pour le bouton de création de compte
         button_create_account.setOnAction(event -> {
-            String username = field_username.getText();
+            username = field_username.getText();
             String password = field_password.getText();
             String confirm_password = field_confirm_password.getText();
 
             if (password.equals(confirm_password)) {
                 if (UserSQL.creerUtilisateur(username, password)) {
                     System.out.println("Compte créé avec succès !");
+                    //UserSQL.setNomUtilisateur(username);
                     ClientInterface clientInterface = new ClientInterface();
                     try {
                         clientInterface.start(new Stage());

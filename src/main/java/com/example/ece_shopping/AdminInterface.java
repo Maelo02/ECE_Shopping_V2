@@ -57,7 +57,10 @@ public class AdminInterface extends Application {
 
 
 
-        Scene newScene = new Scene(root, 400, 600);
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getVisualBounds();
+        Scene newScene = new Scene(root, bounds.getWidth() * 0.8, bounds.getHeight() * 0.8); //80% de la taille de l'écran
+
 
         // Configuration de la fenêtre principale
         primaryStage.setTitle("Page Clients");

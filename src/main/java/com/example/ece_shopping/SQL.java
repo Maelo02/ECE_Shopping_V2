@@ -51,48 +51,6 @@ public class SQL {
         return stockRempli;
     }
 
-    public static ArrayList<Commande> remplirCommande()
-    {
-        Connection conn = null;
-
-        try {
-            String userName = "root";
-            String password = "root";
-            String url = "jdbc:mysql://localhost:8889/commande";
-
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            conn = DriverManager.getConnection(url, userName, password);
-
-            System.out.println("Database connection established");
-
-        } catch (Exception e) {
-
-            System.err.println("Cannot connect to database server");
-            e.printStackTrace();
-        }
-        ArrayList<Commande> commandeRempli = new ArrayList<Commande>();
-
-
-        try {
-            Statement stmt = conn.createStatement();
-            String query = "SELECT * FROM commande";
-            ResultSet rs = stmt.executeQuery(query);
-
-            while (rs.next()) {
-                Commande commande = new Commande(rs.getInt("numero_commande"),rs.getDate("date"), rs.getString("utilisateur"), rs.getInt("nombre_articles"), rs.getFloat("prix_total"));
-                commandeRempli.add(commande);
-            }
-
-            conn.close();
-        } catch (SQLException e) {
-            System.err.println("Error executing query");
-            e.printStackTrace();
-        }
-
-        return commandeRempli;
-    }
-
-
     public static void ajouterArticle(String nomF, double prix, double prixBulk, int quantite, int quantiteBulk, int id)
     {
         Connection conn = connect();
@@ -109,26 +67,29 @@ public class SQL {
         }
     }
 
-    public static void ajouterCommandeSQL(Commande commande) {
+    public static ArrayList<Commande> remplirCommande() {
+        ArrayList<Commande> commandeRempli = new ArrayList<Commande>();
 
-        Connection conn = null;
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/commande", "root", "root");
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM commande")) {
 
-        try {
-            String userName = "root";
-            String password = "root";
-            String url = "jdbc:mysql://localhost:8889/commande";
+            while (rs.next()) {
+                Commande commande = new Commande(rs.getInt("numero_commande"),rs.getDate("date"), rs.getString("utilisateur"), rs.getInt("nombre_articles"), rs.getFloat("prix_total"));
+                commandeRempli.add(commande);
+            }
 
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            conn = DriverManager.getConnection(url, userName, password);
-
-            System.out.println("Database connection established");
-
-        } catch (Exception e) {
-
-            System.err.println("Cannot connect to database server");
+        } catch (SQLException e) {
+            System.err.println("Error executing query");
             e.printStackTrace();
         }
-        try {
+
+        return commandeRempli;
+    }
+
+
+    public static void ajouterCommandeSQL(Commande commande) {
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/commande", "root", "root")) {
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO commande (numero_commande, date, utilisateur, nombre_articles, prix_total) VALUES (?, ?, ?, ?, ?)");
             pstmt.setInt(1, commande.getNumero());
             pstmt.setDate(2, commande.getDate());
@@ -136,32 +97,21 @@ public class SQL {
             pstmt.setInt(4, commande.getNombre_articles());
             pstmt.setFloat(5, commande.getPrix_total());
             pstmt.executeUpdate();
-
-            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public static void suppCommandeSQL(int numero_commande) {
-        Connection conn = null;
-        try {
-            String userName = "root";
-            String password = "root";
-            String url = "jdbc:mysql://localhost:8889/commande";
-
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            conn = DriverManager.getConnection(url, userName, password);
-
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/commande", "root", "root")) {
             PreparedStatement pstmt = conn.prepareStatement("DELETE FROM commande WHERE numero_commande = ?");
             pstmt.setInt(1, numero_commande);
             pstmt.executeUpdate();
-            conn.close();
-        } catch (Exception e) {
-            System.err.println("Cannot connect to database server");
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
 
 

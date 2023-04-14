@@ -42,8 +42,8 @@ public class LoginInterface extends Application {
 
             if (UserSQL.authentifierUtilisateur(username, password)) {
                 System.out.println("Vous êtes connecté !");
-
-                System.out.println(utilisateur);
+                UserSQL user = new UserSQL();
+                //user.setNomUtilisateur(utilisateur);
                 if(UserSQL.isAdmin(utilisateur)) {
                     AdminInterface adminInterface = new AdminInterface();
                     try {

@@ -3,6 +3,9 @@ import java.sql.*;
 import java.util.*;
 
 public class UserSQL {
+
+
+    private String nomUtilisateur;
     public static Connection connect() {
         Connection conn = null;
 
@@ -108,5 +111,12 @@ public class UserSQL {
         }
     }
 
+    /*public static void setNomUtilisateur(String nomUtilisateur) {
+        this.nomUtilisateur = nomUtilisateur;
+    }*/
+
+    public String getNomUtilisateur() {
+        return nomUtilisateur;
+    }
 
 }
