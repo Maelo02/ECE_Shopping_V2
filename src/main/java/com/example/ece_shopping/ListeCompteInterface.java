@@ -9,8 +9,8 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.Scene;
-
 import java.util.HashMap;
+import javafx.scene.control.Button;
 
 public class ListeCompteInterface extends Application {
 
@@ -21,6 +21,8 @@ public class ListeCompteInterface extends Application {
     {
         HashMap<String, String> users = UserSQL.getUsers();
         Stage newStage = new Stage();
+
+        Button button_retour = new Button("Retour");
 
         // Affichage des utilisateurs
         for (String username : users.keySet()) {
@@ -51,12 +53,19 @@ public class ListeCompteInterface extends Application {
             i++;
         }
 
+        grid.add(button_retour, 0, i);
+        button_retour.setOnAction(e -> {
+            newStage.close();
+        });
+
         StackPane root = new StackPane();
         root.getChildren().add(grid);
 
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
         Scene scene = new Scene(root, bounds.getWidth() * 0.8, bounds.getHeight() * 0.8); //80% de la taille de l'écran
+
+
 
         newStage.setScene(scene);
         newStage.show();
