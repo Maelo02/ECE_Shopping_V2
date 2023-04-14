@@ -29,8 +29,6 @@ public class AdminInterface extends Application {
         logoImageView.setFitHeight(200);
         logoImageView.setFitWidth(280);
 
-
-
         // Création des boutons "Mon compte", "Stock" , "Commande", "Ajouter un article" et "Compte client"
         Button listeDesComptes = new Button("Liste des comptes");
         Button stockButton = new Button("Stock");
@@ -51,7 +49,7 @@ public class AdminInterface extends Application {
         root.setBottom(buttonBox);
         BorderPane.setAlignment(logoImageView, Pos.TOP_CENTER);
 
-        listeDesComptes.setOnAction(e -> MonCompteInterface.afficherMonCompte());
+        listeDesComptes.setOnAction(e -> ListeCompteInterface.afficherListeDesComptes());
         stockButton.setOnAction(e -> Stockadmin.voirstock());
         //commandeButton.setOnAction(e -> Commandeadmin.affichercommande());
         ajouterarticle.setOnAction(e -> InterfaceAjoutArticle.ajouterarticle());
