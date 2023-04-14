@@ -8,12 +8,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -28,7 +33,6 @@ public class    Stockadmin extends Application {
         // Création d'un label avec le texte "Page Client"
         Label label = new Label("Page Client");
         int l = 0;
-        int i = 0;
         Stock stock1 = new Stock(SQL.remplirStock());
 
         Label nameLabel211 = new Label("");
@@ -93,7 +97,7 @@ public class    Stockadmin extends Application {
         Spinner<Integer>[] spinners = new Spinner[20];
         GridPane gridPane = new GridPane();
 
-        for (i = 0; i < 20; i++)
+        for (int i = 0; i < 20; i++)
         {
             Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
             imageViews[i] = new ImageView(image);
@@ -110,10 +114,18 @@ public class    Stockadmin extends Application {
             int finalI = i;
             plusbutton[i].setOnAction(event -> {
                 SQL.ajoutQuantite(stock1.getStockArticle().get(finalI).getId());
+                //gridPane.getChildren().clear();
+                cells[finalI].getChildren().clear();
+                cells[finalI].getChildren().addAll(imageViews[finalI], nameLabels[finalI]/*, QTStock*/, plusbutton[finalI], moinsbutton[finalI]);
+                cells[finalI].setAlignment(Pos.CENTER);
             });
 
             moinsbutton[i].setOnAction(event -> {
                 SQL.retirQuantite(stock1.getStockArticle().get(finalI).getId());
+
+                cells[finalI].getChildren().clear();
+                cells[finalI].getChildren().addAll(imageViews[finalI], nameLabels[finalI]/*, QTStock*/, plusbutton[finalI], moinsbutton[finalI]);
+                cells[finalI].setAlignment(Pos.CENTER);
             });
         }
 
