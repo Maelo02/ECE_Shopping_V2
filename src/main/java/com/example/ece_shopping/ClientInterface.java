@@ -17,7 +17,6 @@ import javafx.stage.Screen;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Spinner;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 import java.util.Comparator;
@@ -30,7 +29,6 @@ public class ClientInterface extends Application {
 
         // Création d'un label avec le texte "Page Client"
         Label label = new Label("Page Client");
-        int l = 0;
         Stock stock1 = new Stock(SQL.remplirStock());
 
         Label nameLabel211 = new Label("");
@@ -98,8 +96,6 @@ public class ClientInterface extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        Spinner<Integer>[] spinners = new Spinner[20];
-
         for (int i = 0; i <  stock1.getStockArticle().size(); i++)
         {
             Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
@@ -117,7 +113,7 @@ public class ClientInterface extends Application {
 
         gridPane.setHgap(10);
         gridPane.setVgap(30);
-        gridPane.setTranslateY(30);
+       //gridPane.setTranslateY(30);
         gridPane.setTranslateX(90);
 
         for (int i = 0; i < 20; i++) {
@@ -129,60 +125,135 @@ public class ClientInterface extends Application {
         item1.setOnAction(event -> {
             System.out.println("Option 1 sélectionnée");
 
-            // Insérer ici le code à exécuter pour l'option 1
-        });
-        item2.setOnAction(event -> {
-            System.out.println("Option 2 sélectionnée");
-            // Insérer ici le code à exécuter pour l'option 2
-        });
-        item3.setOnAction(event -> {
-            System.out.println("Option 3 sélectionnée");
-            // Tri des articles par prix croissant
-            stock1.getStockArticle().sort(Comparator.comparingDouble(Article::getPrix));
+            gridPane.getChildren().clear();
+            for(int i = 0; i < 20; i++)
+            {
+                cells[i].getChildren().clear();
+            }
 
-            // Suppression des nœuds enfants existants de la VBox
-            cell21.getChildren().removeAll(cells);
+            // Tri des articles par ordre alphabétique
+            stock1.getStockArticle().sort(Comparator.comparing(Article::getNom));
 
-            // Ajout des articles triés dans la VBox dans l'ordre approprié
-            for (Article article : stock1.getStockArticle()) {
-                int i = stock1.getStockArticle().indexOf(article);
-
-                imageViews[i] = new ImageView(new Image("file:ressource/article_" + article.getId() + ".png"));
-                nameLabels[i] = new Label(article.getNom());
+            for (int i = 0; i <  stock1.getStockArticle().size(); i++)
+            {
+                Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
+                imageViews[i] = new ImageView(image);
+                nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
                 cartButtons[i] = new Button("Ajouter au panier");
 
                 cells[i] = new VBox();
                 cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
                 cells[i].setAlignment(Pos.CENTER);
+            }
 
-                //cell21.getChildren().add(cells[i]);
+            for (int i = 0; i < 20; i++) {
+                int column = i % 4;
+                int row = i / 4;
+                gridPane.add(cells[i], column, row);
+            }
 
+          // cell21.getChildren().addAll(nameLabel211, nameLabel212, nameLabel213);
+          // gridPane.add(cell21, 0, 5,4,1);
 
-                gridPane.getChildren().removeAll(cells);
-                gridPane.getChildren().removeAll(cells[0]);
+        });
 
-                for (int test = 0; test < 20; test++) {
-                    int column = test % 4;
-                    int row = test / 4;
-                    gridPane.add(cells[test], column, row);
-                }
+        item2.setOnAction(event -> {
+            System.out.println("Option 2 sélectionnée");
+
+            gridPane.getChildren().clear();
+            for(int i = 0; i < 20; i++)
+            {
+                cells[i].getChildren().clear();
+            }
+
+            // Tri des articles par ordre alphabétique decroissant
+            stock1.getStockArticle().sort(Comparator.comparing(Article::getNom).reversed());
+
+            for (int i = 0; i <  stock1.getStockArticle().size(); i++)
+            {
+                Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
+                imageViews[i] = new ImageView(image);
+                nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
+                cartButtons[i] = new Button("Ajouter au panier");
+
+                cells[i] = new VBox();
+                cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
+                cells[i].setAlignment(Pos.CENTER);
+            }
+
+            for (int i = 0; i < 20; i++) {
+                int column = i % 4;
+                int row = i / 4;
+                gridPane.add(cells[i], column, row);
             }
         });
 
+        item3.setOnAction(event -> {
+            System.out.println("Option 3 sélectionnée");
+            gridPane.getChildren().clear();
+            for(int i = 0; i < 20; i++)
+            {
+                cells[i].getChildren().clear();
+            }
 
+            // Tri des articles par ordre alphabétique
+            stock1.getStockArticle().sort(Comparator.comparing(Article::getPrix));
 
+            for (int i = 0; i <  stock1.getStockArticle().size(); i++)
+            {
+                Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
+                imageViews[i] = new ImageView(image);
+                nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
+                cartButtons[i] = new Button("Ajouter au panier");
+
+                cells[i] = new VBox();
+                cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
+                cells[i].setAlignment(Pos.CENTER);
+            }
+
+            for (int i = 0; i < 20; i++) {
+                int column = i % 4;
+                int row = i / 4;
+                gridPane.add(cells[i], column, row);
+            }
+        });
+
+        item4.setOnAction(event -> {
+            System.out.println("Option 4 sélectionnée");
+            gridPane.getChildren().clear();
+            for(int i = 0; i < 20; i++)
+            {
+                cells[i].getChildren().clear();
+            }
+
+            // Tri des articles par ordre alphabétique decroissant
+            stock1.getStockArticle().sort(Comparator.comparing(Article::getPrix).reversed());
+
+            for (int i = 0; i <  stock1.getStockArticle().size(); i++)
+            {
+                Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
+                imageViews[i] = new ImageView(image);
+                nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
+                cartButtons[i] = new Button("Ajouter au panier");
+
+                cells[i] = new VBox();
+                cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
+                cells[i].setAlignment(Pos.CENTER);
+            }
+
+            for (int i = 0; i < 20; i++) {
+                int column = i % 4;
+                int row = i / 4;
+                gridPane.add(cells[i], column, row);
+            }
+        });
 
         for (int i = 0; i < cartButtons.length; i++) {
             int j = i;
             cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
-
         }
 
-
-
-
-
-        gridPane.add(cell21, 0, 5, 4, 1);
+        //gridPane.add(cell21, 0, 5, 4, 1);
 
         ScrollPane scrollPane = new ScrollPane(gridPane);
         root.setCenter(scrollPane);
