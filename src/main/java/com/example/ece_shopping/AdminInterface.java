@@ -55,8 +55,6 @@ public class AdminInterface extends Application {
         //commandeButton.setOnAction(e -> Commandeadmin.affichercommande());
         ajouterarticle.setOnAction(e -> InterfaceAjoutArticle.ajouterarticle());
 
-
-
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
         Scene newScene = new Scene(root, bounds.getWidth() * 0.8, bounds.getHeight() * 0.8); //80% de la taille de l'écran

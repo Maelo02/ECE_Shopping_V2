@@ -20,9 +20,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-
 import java.util.Comparator;
 
 
@@ -131,6 +128,7 @@ public class ClientInterface extends Application {
 
         item1.setOnAction(event -> {
             System.out.println("Option 1 sélectionnée");
+
             // Insérer ici le code à exécuter pour l'option 1
         });
         item2.setOnAction(event -> {

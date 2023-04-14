@@ -87,7 +87,7 @@ public class    Stockadmin extends Application {
 
         for (int i = 0; i < 20; i++)
         {
-            Image image = new Image("file:ressource/article_" + (i+1) + ".png");
+            Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
             imageViews[i] = new ImageView(image);
             nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
             QTStock = new Label("Quantité en Stock : " + stock1.getStockArticle().get(i).getQuantite());
