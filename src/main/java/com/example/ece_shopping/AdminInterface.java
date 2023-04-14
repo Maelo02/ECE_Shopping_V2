@@ -34,10 +34,11 @@ public class AdminInterface extends Application {
         // Création des boutons "Mon compte", "Stock" et "Commande"
         Button monCompteButton = new Button("Mon compte");
         Button stockButton = new Button("Stock");
-        Button cartButton = new Button("Commande");
+        Button commandeButton = new Button("Commande");
+        Button ajouterarticle = new Button("Ajouter un article");
 
         // Création d'un conteneur de type VBox pour organiser la mise en page des boutons
-        VBox buttonBox = new VBox(10, monCompteButton, stockButton, cartButton);
+        VBox buttonBox = new VBox(10, monCompteButton, stockButton, commandeButton, ajouterarticle);
         buttonBox.setAlignment(Pos.CENTER);
         buttonBox.setPadding(new Insets(20));
         buttonBox.translateYProperty().set(-150);
@@ -50,6 +51,10 @@ public class AdminInterface extends Application {
         BorderPane.setAlignment(logoImageView, Pos.TOP_CENTER);
 
         monCompteButton.setOnAction(e -> MonCompte.affichermoncompte());
+        stockButton.setOnAction(e -> Stockadmin.voirstock());
+        //commandeButton.setOnAction(e -> Commandeadmin.affichercommande());
+        ajouterarticle.setOnAction(e -> InterfaceAjoutArticle.ajouterarticle());
+
 
 
         Scene newScene = new Scene(root, 400, 600);

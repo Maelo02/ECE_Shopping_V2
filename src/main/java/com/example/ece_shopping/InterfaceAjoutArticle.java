@@ -18,6 +18,9 @@ import javafx.scene.text.Text;
 public class InterfaceAjoutArticle extends Application {
 
     public void start(Stage primaryStage) {
+    }
+    public static void ajouterarticle()
+    {
         // Création d'un label avec le texte "Page Admin"
         Label label = new Label("Ajouter un article");
         TextField field_nom = new TextField();
@@ -38,7 +41,10 @@ public class InterfaceAjoutArticle extends Application {
         Button button = new Button("Ajouter");
         Button button_retour = new Button("Retour");
 
+
         text.setFont(Font.font("Verdana", 20));
+
+        Stage newStage = new Stage();
 
         HBox hbox = new HBox(text);
         hbox.setAlignment(Pos.CENTER);
@@ -97,9 +103,10 @@ public class InterfaceAjoutArticle extends Application {
         // Création de la scène avec une taille proportionnelle à celle de l'écran
         Scene scene = new Scene(root, bounds.getWidth() * 0.8, bounds.getHeight() * 0.8); //80% de la taille de l'écran
 
-        // Définir la scène et l'afficher
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        button_retour.setOnAction(e -> newStage.close());
+
+        newStage.setScene(scene);
+        newStage.show();
 
     }
 }
