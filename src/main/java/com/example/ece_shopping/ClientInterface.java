@@ -112,6 +112,10 @@ public class ClientInterface extends Application {
             cells[i].setAlignment(Pos.CENTER);
         }
 
+        monCompteButton.setOnAction(event -> {
+           MonCompteInterface.afficherMonCompte();
+        });
+
         cell21.getChildren().addAll(nameLabel211, nameLabel212, nameLabel213);
         GridPane gridPane = new GridPane();
 

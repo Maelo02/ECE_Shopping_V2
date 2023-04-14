@@ -1,15 +1,17 @@
 package com.example.ece_shopping;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
 
+public class ListeCompteInterface extends Application {
 
-public class Main {
-    public static void main(String[] args) {
+    public void start(Stage primaryStage) {
+    }
 
+    public void afficherListeDesComptes()
+    {
         HashMap<String, String> users = UserSQL.getUsers();
 
         // Affichage des utilisateurs
@@ -18,6 +20,6 @@ public class Main {
             System.out.println("Nom d'utilisateur : " + username + ", Mot de passe : " + password);
         }
 
-        Application.launch(LoginInterface.class, args);
+
     }
 }
