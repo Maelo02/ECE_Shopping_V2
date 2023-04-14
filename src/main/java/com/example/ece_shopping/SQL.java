@@ -112,6 +112,30 @@ public class SQL {
         }
     }
 
+    public static void ajoutQuantite(long id) {
+        Connection conn = connect();
+        try {
+            Statement stmt = conn.createStatement();
+            String query = "UPDATE article SET Quantite = Quantite + 1 WHERE Id = " + id;
+            stmt.executeUpdate(query);
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void retirQuantite(long id){
+        Connection conn = connect();
+        try {
+            Statement stmt = conn.createStatement();
+            String query = "UPDATE article SET Quantite = Quantite - 1 WHERE Id = " + id;
+            stmt.executeUpdate(query);
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 

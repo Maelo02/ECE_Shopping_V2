@@ -11,6 +11,9 @@ import javafx.scene.layout.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -25,6 +28,7 @@ public class    Stockadmin extends Application {
         // Création d'un label avec le texte "Page Client"
         Label label = new Label("Page Client");
         int l = 0;
+        int i = 0;
         Stock stock1 = new Stock(SQL.remplirStock());
 
         Label nameLabel211 = new Label("");
@@ -34,6 +38,9 @@ public class    Stockadmin extends Application {
         Stage newStage = new Stage();
 
         VBox cell21 = new VBox();
+
+        Button[] plusbutton = new Button[20];
+        Button[] moinsbutton = new Button[20];
 
         ImageView[] imageViews = new ImageView[20];
         Label[] nameLabels = new Label[20];
@@ -84,32 +91,43 @@ public class    Stockadmin extends Application {
         newStage.show();
 
         Spinner<Integer>[] spinners = new Spinner[20];
+        GridPane gridPane = new GridPane();
 
-        for (int i = 0; i < 20; i++)
+        for (i = 0; i < 20; i++)
         {
             Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
             imageViews[i] = new ImageView(image);
             nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
             QTStock = new Label("Quantité en Stock : " + stock1.getStockArticle().get(i).getQuantite());
+            plusbutton[i] = new Button(" +1 ");
+            moinsbutton[i] = new Button(" -1 ");
 
 
             cells[i] = new VBox();
-            cells[i].getChildren().addAll(imageViews[i], nameLabels[i], QTStock);
+            cells[i].getChildren().addAll(imageViews[i], nameLabels[i], QTStock, plusbutton[i], moinsbutton[i]);
             cells[i].setAlignment(Pos.CENTER);
+
+            int finalI = i;
+            plusbutton[i].setOnAction(event -> {
+                SQL.ajoutQuantite(stock1.getStockArticle().get(finalI).getId());
+            });
+
+            moinsbutton[i].setOnAction(event -> {
+                SQL.retirQuantite(stock1.getStockArticle().get(finalI).getId());
+            });
         }
 
         cell21.getChildren().addAll(nameLabel211, nameLabel212, nameLabel213);
-        GridPane gridPane = new GridPane();
 
         gridPane.setHgap(10);
         gridPane.setVgap(30);
         gridPane.setTranslateY(30);
         gridPane.setTranslateX(90);
 
-        for (int i = 0; i < 20; i++) {
-            int column = i % 4;
-            int row = i / 4;
-            gridPane.add(cells[i], column, row);
+        for (int j = 0; j < 20; j++) {
+            int column = j % 4;
+            int row = j / 4;
+            gridPane.add(cells[j], column, row);
         }
 
         gridPane.add(cell21, 0, 5, 4, 1);
