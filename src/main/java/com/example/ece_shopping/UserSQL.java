@@ -111,9 +111,9 @@ public class UserSQL {
         }
     }
 
-    /*public static void setNomUtilisateur(String nomUtilisateur) {
+    public void setNomUtilisateur(String nomUtilisateur) {
         this.nomUtilisateur = nomUtilisateur;
-    }*/
+    }
 
     public String getNomUtilisateur() {
         return nomUtilisateur;

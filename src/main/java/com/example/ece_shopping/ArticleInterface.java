@@ -21,7 +21,7 @@ public class ArticleInterface extends Application {
 
     }
 
-    public static void afficherArticle(int j, Article article)
+    public static void afficherArticle(Article article)
     {
         //On récupère les informations de l'article
         String nom = article.getNom();
@@ -30,7 +30,7 @@ public class ArticleInterface extends Application {
         int quantite = article.getQuantite();
         int quantiteBulk = article.getQuantiteBulk();
 
-        Image image = new Image("file:ressource/article_" + (j+1) + ".png");
+        Image image = new Image("file:ressource/article_" + article.getId() + ".png");
         ImageView imageView = new ImageView(image);
 
         //On crée une nouvelle fenêtre

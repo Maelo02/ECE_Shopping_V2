@@ -23,6 +23,8 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import java.util.Comparator;
+
 
 public class ClientInterface extends Application {
 
@@ -101,9 +103,9 @@ public class ClientInterface extends Application {
 
         Spinner<Integer>[] spinners = new Spinner[20];
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i <  stock1.getStockArticle().size(); i++)
         {
-            Image image = new Image("file:ressource/article_" + (i+1) + ".png");
+            Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
             imageViews[i] = new ImageView(image);
             nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
             cartButtons[i] = new Button("Ajouter au panier");
@@ -115,19 +117,7 @@ public class ClientInterface extends Application {
 
         item1.setOnAction(event -> {
             System.out.println("Option 1 sélectionnée");
-            stock1.getStockArticle().sort((a1, a2) -> Double.compare(a1.getPrix(), a2.getPrix()));
-
-            for (int i = 0; i < 20; i++)
-            {
-                Image image = new Image("file:ressource/article_" + (i+1) + ".png");
-                imageViews[i] = new ImageView(image);
-                nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
-                cartButtons[i] = new Button("Ajouter au panier");
-
-                cells[i] = new VBox();
-                cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
-                cells[i].setAlignment(Pos.CENTER);
-            }
+            // Insérer ici le code à exécuter pour l'option 1
         });
         item2.setOnAction(event -> {
             System.out.println("Option 2 sélectionnée");
@@ -135,12 +125,32 @@ public class ClientInterface extends Application {
         });
         item3.setOnAction(event -> {
             System.out.println("Option 3 sélectionnée");
-            // Insérer ici le code à exécuter pour l'option 3
+            // Tri des articles par prix croissant
+            stock1.getStockArticle().sort(Comparator.comparingDouble(Article::getPrix));
+
+            // Suppression des nœuds enfants existants de la VBox
+            cell21.getChildren().clear();
+
+            // Ajout des articles triés dans la VBox dans l'ordre approprié
+            for (Article article : stock1.getStockArticle()) {
+                int i = stock1.getStockArticle().indexOf(article);
+
+                imageViews[i] = new ImageView(new Image("file:ressource/article_" + article.getId() + ".png"));
+                nameLabels[i] = new Label(article.getNom());
+                cartButtons[i] = new Button("Ajouter au panier");
+
+                cells[i] = new VBox();
+                cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
+                cells[i].setAlignment(Pos.CENTER);
+
+                cell21.getChildren().add(cells[i]);
+            }
         });
+
 
         for (int i = 0; i < cartButtons.length; i++) {
             int j = i;
-            cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(j,stock1.getStockArticle().get(j)));
+            cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
         }
 
 
