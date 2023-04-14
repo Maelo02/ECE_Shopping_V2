@@ -113,7 +113,6 @@ public class ClientInterface extends Application {
 
         gridPane.setHgap(10);
         gridPane.setVgap(30);
-       //gridPane.setTranslateY(30);
         gridPane.setTranslateX(90);
 
         for (int i = 0; i < 20; i++) {
@@ -152,9 +151,10 @@ public class ClientInterface extends Application {
                 gridPane.add(cells[i], column, row);
             }
 
-          // cell21.getChildren().addAll(nameLabel211, nameLabel212, nameLabel213);
-          // gridPane.add(cell21, 0, 5,4,1);
-
+            for (int i = 0; i < cartButtons.length; i++) {
+                int j = i;
+                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+            }
         });
 
         item2.setOnAction(event -> {
@@ -186,6 +186,11 @@ public class ClientInterface extends Application {
                 int row = i / 4;
                 gridPane.add(cells[i], column, row);
             }
+
+            for (int i = 0; i < cartButtons.length; i++) {
+                int j = i;
+                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+            }
         });
 
         item3.setOnAction(event -> {
@@ -215,6 +220,10 @@ public class ClientInterface extends Application {
                 int column = i % 4;
                 int row = i / 4;
                 gridPane.add(cells[i], column, row);
+            }
+            for (int i = 0; i < cartButtons.length; i++) {
+                int j = i;
+                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
             }
         });
 
@@ -246,14 +255,17 @@ public class ClientInterface extends Application {
                 int row = i / 4;
                 gridPane.add(cells[i], column, row);
             }
+
+            for (int i = 0; i < cartButtons.length; i++) {
+                int j = i;
+                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+            }
         });
 
         for (int i = 0; i < cartButtons.length; i++) {
             int j = i;
             cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
         }
-
-        //gridPane.add(cell21, 0, 5, 4, 1);
 
         ScrollPane scrollPane = new ScrollPane(gridPane);
         root.setCenter(scrollPane);
