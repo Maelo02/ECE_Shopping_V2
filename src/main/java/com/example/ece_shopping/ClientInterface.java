@@ -115,6 +115,20 @@ public class ClientInterface extends Application {
             cells[i].setAlignment(Pos.CENTER);
         }
 
+        cell21.getChildren().addAll(nameLabel211, nameLabel212, nameLabel213);
+        GridPane gridPane = new GridPane();
+
+        gridPane.setHgap(10);
+        gridPane.setVgap(30);
+        gridPane.setTranslateY(30);
+        gridPane.setTranslateX(90);
+
+        for (int i = 0; i < 20; i++) {
+            int column = i % 4;
+            int row = i / 4;
+            gridPane.add(cells[i], column, row);
+        }
+
         item1.setOnAction(event -> {
             System.out.println("Option 1 sélectionnée");
             // Insérer ici le code à exécuter pour l'option 1
@@ -129,7 +143,7 @@ public class ClientInterface extends Application {
             stock1.getStockArticle().sort(Comparator.comparingDouble(Article::getPrix));
 
             // Suppression des nœuds enfants existants de la VBox
-            cell21.getChildren().clear();
+            cell21.getChildren().removeAll(cells);
 
             // Ajout des articles triés dans la VBox dans l'ordre approprié
             for (Article article : stock1.getStockArticle()) {
@@ -143,30 +157,32 @@ public class ClientInterface extends Application {
                 cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
                 cells[i].setAlignment(Pos.CENTER);
 
-                cell21.getChildren().add(cells[i]);
+                //cell21.getChildren().add(cells[i]);
+
+
+                gridPane.getChildren().removeAll(cells);
+                gridPane.getChildren().removeAll(cells[0]);
+
+                for (int test = 0; test < 20; test++) {
+                    int column = test % 4;
+                    int row = test / 4;
+                    gridPane.add(cells[test], column, row);
+                }
             }
         });
+
+
 
 
         for (int i = 0; i < cartButtons.length; i++) {
             int j = i;
             cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+
         }
 
 
-        cell21.getChildren().addAll(nameLabel211, nameLabel212, nameLabel213);
-        GridPane gridPane = new GridPane();
 
-        gridPane.setHgap(10);
-        gridPane.setVgap(30);
-        gridPane.setTranslateY(30);
-        gridPane.setTranslateX(90);
 
-        for (int i = 0; i < 20; i++) {
-            int column = i % 4;
-            int row = i / 4;
-            gridPane.add(cells[i], column, row);
-        }
 
         gridPane.add(cell21, 0, 5, 4, 1);
 
