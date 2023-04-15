@@ -114,8 +114,17 @@ public class ClientInterface extends Application {
 
         for (int i = 0; i <  stock1.getStockArticle().size(); i++)
         {
-            Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
-            imageViews[i] = new ImageView(image);
+            if(i<20)
+            {
+                Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
+                imageViews[i] = new ImageView(image);
+            }
+            else
+            {
+                Image image = new Image("file:ressource/Placeholder.png");
+                imageViews[i] = new ImageView(image);
+            }
+
             nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
             cartButtons[i] = new Button("Ajouter au panier");
 
@@ -123,7 +132,6 @@ public class ClientInterface extends Application {
             cells[i].getChildren().addAll(imageViews[i], nameLabels[i], cartButtons[i]);
             cells[i].setAlignment(Pos.CENTER);
         }
-
 
         monCompteButton.setOnAction(e -> MonCompteclient.infoclient(utilisateur,mdp));
 
@@ -141,7 +149,6 @@ public class ClientInterface extends Application {
         }
 
         item1.setOnAction(event -> {
-            System.out.println("Option 1 sélectionnée");
 
             gridPane.getChildren().clear();
             for(int i = 0; i < stock1.getStockArticle().size(); i++)
@@ -156,6 +163,13 @@ public class ClientInterface extends Application {
             {
                 Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
                 imageViews[i] = new ImageView(image);
+
+                if(imageViews[i].getImage().isError())
+                {
+                    Image image2 = new Image("file:ressource/Placeholder.png");
+                    imageViews[i] = new ImageView(image2);
+                }
+
                 nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
                 cartButtons[i] = new Button("Ajouter au panier");
 
@@ -172,7 +186,9 @@ public class ClientInterface extends Application {
 
             for (int i = 0; i < cartButtons.length; i++) {
                 int j = i;
+
                 cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+
             }
         });
 
@@ -192,6 +208,12 @@ public class ClientInterface extends Application {
             {
                 Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
                 imageViews[i] = new ImageView(image);
+
+                if(imageViews[i].getImage().isError())
+                {
+                    Image image2 = new Image("file:ressource/Placeholder.png");
+                    imageViews[i] = new ImageView(image2);
+                }
                 nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
                 cartButtons[i] = new Button("Ajouter au panier");
 
@@ -208,7 +230,9 @@ public class ClientInterface extends Application {
 
             for (int i = 0; i < cartButtons.length; i++) {
                 int j = i;
+
                 cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+
             }
         });
 
@@ -227,6 +251,12 @@ public class ClientInterface extends Application {
             {
                 Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
                 imageViews[i] = new ImageView(image);
+
+                if(imageViews[i].getImage().isError())
+                {
+                    Image image2 = new Image("file:ressource/Placeholder.png");
+                    imageViews[i] = new ImageView(image2);
+                }
                 nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
                 cartButtons[i] = new Button("Ajouter au panier");
 
@@ -242,7 +272,9 @@ public class ClientInterface extends Application {
             }
             for (int i = 0; i < cartButtons.length; i++) {
                 int j = i;
+
                 cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+
             }
         });
 
@@ -261,6 +293,12 @@ public class ClientInterface extends Application {
             {
                 Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
                 imageViews[i] = new ImageView(image);
+
+                if(imageViews[i].getImage().isError())
+                {
+                    Image image2 = new Image("file:ressource/Placeholder.png");
+                    imageViews[i] = new ImageView(image2);
+                }
                 nameLabels[i] = new Label(stock1.getStockArticle().get(i).getNom());
                 cartButtons[i] = new Button("Ajouter au panier");
 
@@ -277,11 +315,13 @@ public class ClientInterface extends Application {
 
             for (int i = 0; i < cartButtons.length; i++) {
                 int j = i;
+
                 cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+
             }
         });
 
-        searchField.setOnAction(event -> {
+            searchField.setOnAction(event -> {
             String searchText = searchField.getText();
             ArrayList<String> rechercheStock = new ArrayList<>();
             System.out.println("Searching for: " + searchText);
@@ -304,6 +344,12 @@ public class ClientInterface extends Application {
                         // Créer les nœuds correspondants pour l'article
                         Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
                         imageViews[count] = new ImageView(image);
+
+                        if(imageViews[i].getImage().isError())
+                        {
+                            Image image2 = new Image("file:ressource/Placeholder.png");
+                            imageViews[i] = new ImageView(image2);
+                        }
                         nameLabels[count] = new Label(stock1.getStockArticle().get(i).getNom());
                         cartButtons[count] = new Button("Ajouter au panier");
 
@@ -322,16 +368,19 @@ public class ClientInterface extends Application {
                 }
             }
 
-            for (int i = 0; i < cartButtons.length; i++) {
-                int j = i;
-                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
-            }
+                for (int i = 0; i < cartButtons.length; i++) {
+                    int j = i;
 
+                    cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+
+                }
         });
 
         for (int i = 0; i < cartButtons.length; i++) {
             int j = i;
+
             cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+
         }
 
         passeradmin.setOnAction(event -> {
