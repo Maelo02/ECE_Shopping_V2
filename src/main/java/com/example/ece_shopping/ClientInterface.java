@@ -29,6 +29,13 @@ import java.util.Objects;
 
 public class ClientInterface extends Application {
 
+    private String utilisateur;
+    private String mdp;
+
+    public ClientInterface(String parametre1, String parametre2) {
+        this.utilisateur = parametre1;
+        this.mdp = parametre2;
+    }
     @Override
     public void start(Stage primaryStage) {
 
@@ -113,9 +120,8 @@ public class ClientInterface extends Application {
             cells[i].setAlignment(Pos.CENTER);
         }
 
-        monCompteButton.setOnAction(event -> {
-           MonCompteInterface.afficherMonCompte();
-        });
+
+        monCompteButton.setOnAction(e -> MonCompteclient.infoclient(utilisateur,mdp));
 
         cell21.getChildren().addAll(nameLabel211, nameLabel212, nameLabel213);
         GridPane gridPane = new GridPane();

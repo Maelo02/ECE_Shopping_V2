@@ -56,7 +56,7 @@ public class AdminInterface extends Application {
 
         compteclient.setOnAction(e -> {
             try {
-                new ClientInterface().start(new Stage());
+                new ClientInterface("","").start(new Stage());
                 primaryStage.close();
             } catch (Exception exception) {
                 exception.printStackTrace();

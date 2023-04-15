@@ -27,7 +27,7 @@ public class passeradmin {
         Button button_retour = new Button("Retour");
 
         button_retour.setOnAction(event -> {
-            ClientInterface clientInterface = new ClientInterface();
+            ClientInterface clientInterface = new ClientInterface("Compte client admin", "AMMP");
             try {
                 clientInterface.start(new Stage());
                 primaryStage.close();

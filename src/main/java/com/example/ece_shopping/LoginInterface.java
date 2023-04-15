@@ -53,7 +53,7 @@ public class LoginInterface extends Application {
                     }
                 }
                  else {
-                    ClientInterface clientInterface = new ClientInterface();
+                    ClientInterface clientInterface = new ClientInterface(username, password);
                     try {
                         clientInterface.start(new Stage());
                         primaryStage.close();
