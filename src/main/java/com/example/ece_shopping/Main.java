@@ -1,11 +1,6 @@
 package com.example.ece_shopping;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 import javafx.application.Application;
-import javafx.stage.Stage;
-
-
 
 public class Main {
     public static void main(String[] args) {

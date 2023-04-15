@@ -19,6 +19,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
+
 import java.util.Arrays;
 
 
@@ -36,6 +37,7 @@ public class ClientInterface extends Application {
         this.utilisateur = parametre1;
         this.mdp = parametre2;
     }
+
     @Override
     public void start(Stage primaryStage) {
 
@@ -112,15 +114,11 @@ public class ClientInterface extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        for (int i = 0; i <  stock1.getStockArticle().size(); i++)
-        {
-            if(i<20)
-            {
+        for (int i = 0; i < stock1.getStockArticle().size(); i++) {
+            if (i < 20) {
                 Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
                 imageViews[i] = new ImageView(image);
-            }
-            else
-            {
+            } else {
                 Image image = new Image("file:ressource/Placeholder.png");
                 imageViews[i] = new ImageView(image);
             }
@@ -133,7 +131,7 @@ public class ClientInterface extends Application {
             cells[i].setAlignment(Pos.CENTER);
         }
 
-        monCompteButton.setOnAction(e -> MonCompteclient.infoclient(utilisateur,mdp));
+        monCompteButton.setOnAction(e -> MonCompteclient.infoclient(utilisateur, mdp));
 
         cell21.getChildren().addAll(nameLabel211, nameLabel212, nameLabel213);
         GridPane gridPane = new GridPane();
@@ -151,21 +149,18 @@ public class ClientInterface extends Application {
         item1.setOnAction(event -> {
 
             gridPane.getChildren().clear();
-            for(int i = 0; i < stock1.getStockArticle().size(); i++)
-            {
+            for (int i = 0; i < stock1.getStockArticle().size(); i++) {
                 cells[i].getChildren().clear();
             }
 
             // Tri des articles par ordre alphabétique
             stock1.getStockArticle().sort(Comparator.comparing(Article::getNom));
 
-            for (int i = 0; i <  stock1.getStockArticle().size(); i++)
-            {
+            for (int i = 0; i < stock1.getStockArticle().size(); i++) {
                 Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
                 imageViews[i] = new ImageView(image);
 
-                if(imageViews[i].getImage().isError())
-                {
+                if (imageViews[i].getImage().isError()) {
                     Image image2 = new Image("file:ressource/Placeholder.png");
                     imageViews[i] = new ImageView(image2);
                 }
@@ -196,21 +191,18 @@ public class ClientInterface extends Application {
             System.out.println("Option 2 sélectionnée");
 
             gridPane.getChildren().clear();
-            for(int i = 0; i < stock1.getStockArticle().size(); i++)
-            {
+            for (int i = 0; i < stock1.getStockArticle().size(); i++) {
                 cells[i].getChildren().clear();
             }
 
             // Tri des articles par ordre alphabétique decroissant
             stock1.getStockArticle().sort(Comparator.comparing(Article::getNom).reversed());
 
-            for (int i = 0; i <  stock1.getStockArticle().size(); i++)
-            {
+            for (int i = 0; i < stock1.getStockArticle().size(); i++) {
                 Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
                 imageViews[i] = new ImageView(image);
 
-                if(imageViews[i].getImage().isError())
-                {
+                if (imageViews[i].getImage().isError()) {
                     Image image2 = new Image("file:ressource/Placeholder.png");
                     imageViews[i] = new ImageView(image2);
                 }
@@ -239,21 +231,18 @@ public class ClientInterface extends Application {
         item3.setOnAction(event -> {
             System.out.println("Option 3 sélectionnée");
             gridPane.getChildren().clear();
-            for(int i = 0; i < stock1.getStockArticle().size(); i++)
-            {
+            for (int i = 0; i < stock1.getStockArticle().size(); i++) {
                 cells[i].getChildren().clear();
             }
 
             // Tri des articles par ordre alphabétique
             stock1.getStockArticle().sort(Comparator.comparing(Article::getPrix));
 
-            for (int i = 0; i <  stock1.getStockArticle().size(); i++)
-            {
+            for (int i = 0; i < stock1.getStockArticle().size(); i++) {
                 Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
                 imageViews[i] = new ImageView(image);
 
-                if(imageViews[i].getImage().isError())
-                {
+                if (imageViews[i].getImage().isError()) {
                     Image image2 = new Image("file:ressource/Placeholder.png");
                     imageViews[i] = new ImageView(image2);
                 }
@@ -281,21 +270,18 @@ public class ClientInterface extends Application {
         item4.setOnAction(event -> {
             System.out.println("Option 4 sélectionnée");
             gridPane.getChildren().clear();
-            for(int i = 0; i < stock1.getStockArticle().size(); i++)
-            {
+            for (int i = 0; i < stock1.getStockArticle().size(); i++) {
                 cells[i].getChildren().clear();
             }
 
             // Tri des articles par ordre alphabétique decroissant
             stock1.getStockArticle().sort(Comparator.comparing(Article::getPrix).reversed());
 
-            for (int i = 0; i <  stock1.getStockArticle().size(); i++)
-            {
+            for (int i = 0; i < stock1.getStockArticle().size(); i++) {
                 Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
                 imageViews[i] = new ImageView(image);
 
-                if(imageViews[i].getImage().isError())
-                {
+                if (imageViews[i].getImage().isError()) {
                     Image image2 = new Image("file:ressource/Placeholder.png");
                     imageViews[i] = new ImageView(image2);
                 }
@@ -321,7 +307,7 @@ public class ClientInterface extends Application {
             }
         });
 
-            searchField.setOnAction(event -> {
+        searchField.setOnAction(event -> {
             String searchText = searchField.getText();
             ArrayList<String> rechercheStock = new ArrayList<>();
             System.out.println("Searching for: " + searchText);
@@ -332,8 +318,7 @@ public class ClientInterface extends Application {
                 }
             }
             gridPane.getChildren().clear();
-            for(int i = 0; i < gridPane.getChildren().size(); i++)
-            {
+            for (int i = 0; i < gridPane.getChildren().size(); i++) {
                 cells[i].getChildren().clear();
             }
 
@@ -345,8 +330,7 @@ public class ClientInterface extends Application {
                         Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
                         imageViews[count] = new ImageView(image);
 
-                        if(imageViews[i].getImage().isError())
-                        {
+                        if (imageViews[i].getImage().isError()) {
                             Image image2 = new Image("file:ressource/Placeholder.png");
                             imageViews[i] = new ImageView(image2);
                         }
@@ -368,12 +352,12 @@ public class ClientInterface extends Application {
                 }
             }
 
-                for (int i = 0; i < cartButtons.length; i++) {
-                    int j = i;
+            for (int i = 0; i < cartButtons.length; i++) {
+                int j = i;
 
-                    cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
 
-                }
+            }
         });
 
         for (int i = 0; i < cartButtons.length; i++) {
@@ -384,7 +368,7 @@ public class ClientInterface extends Application {
         }
 
         passeradmin.setOnAction(event -> {
-            passeradmin Passeradmin = new passeradmin(utilisateur,mdp);
+            passeradmin Passeradmin = new passeradmin(utilisateur, mdp);
             try {
                 Passeradmin.start(new Stage());
                 primaryStage.close();
@@ -399,6 +383,3 @@ public class ClientInterface extends Application {
         root.setCenter(scrollPane);
     }
 }
-
-
-
