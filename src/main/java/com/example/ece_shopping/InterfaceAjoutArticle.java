@@ -70,7 +70,6 @@ public class InterfaceAjoutArticle extends Application {
         grid.add(field_quantiteBulk, 1, 5);
         grid.add(label_id, 0, 6);
         grid.add(field_id, 1, 6);
-
         grid.add(button, 1, 7);
         grid.add(button_retour, 0, 7);
 

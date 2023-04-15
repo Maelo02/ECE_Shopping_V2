@@ -49,10 +49,10 @@ public class ClientInterface extends Application {
 
         VBox cell21 = new VBox();
 
-        ImageView[] imageViews = new ImageView[20];
-        Label[] nameLabels = new Label[20];
-        Button[] cartButtons = new Button[20];
-        VBox[] cells = new VBox[20];
+        ImageView[] imageViews = new ImageView[stock1.getStockArticle().size()];
+        Label[] nameLabels = new Label[stock1.getStockArticle().size()];
+        Button[] cartButtons = new Button[stock1.getStockArticle().size()];
+        VBox[] cells = new VBox[stock1.getStockArticle().size()];
 
         // Création de l'image du logo
         Image logoImage = new Image("file:ressource/logo.png");
@@ -134,7 +134,7 @@ public class ClientInterface extends Application {
         gridPane.setVgap(30);
         gridPane.setTranslateX(90);
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < stock1.getStockArticle().size(); i++) {
             int column = i % 4;
             int row = i / 4;
             gridPane.add(cells[i], column, row);
@@ -144,7 +144,7 @@ public class ClientInterface extends Application {
             System.out.println("Option 1 sélectionnée");
 
             gridPane.getChildren().clear();
-            for(int i = 0; i < 20; i++)
+            for(int i = 0; i < stock1.getStockArticle().size(); i++)
             {
                 cells[i].getChildren().clear();
             }
@@ -164,7 +164,7 @@ public class ClientInterface extends Application {
                 cells[i].setAlignment(Pos.CENTER);
             }
 
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < stock1.getStockArticle().size(); i++) {
                 int column = i % 4;
                 int row = i / 4;
                 gridPane.add(cells[i], column, row);
@@ -180,7 +180,7 @@ public class ClientInterface extends Application {
             System.out.println("Option 2 sélectionnée");
 
             gridPane.getChildren().clear();
-            for(int i = 0; i < 20; i++)
+            for(int i = 0; i < stock1.getStockArticle().size(); i++)
             {
                 cells[i].getChildren().clear();
             }
@@ -200,7 +200,7 @@ public class ClientInterface extends Application {
                 cells[i].setAlignment(Pos.CENTER);
             }
 
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < stock1.getStockArticle().size(); i++) {
                 int column = i % 4;
                 int row = i / 4;
                 gridPane.add(cells[i], column, row);
@@ -215,7 +215,7 @@ public class ClientInterface extends Application {
         item3.setOnAction(event -> {
             System.out.println("Option 3 sélectionnée");
             gridPane.getChildren().clear();
-            for(int i = 0; i < 20; i++)
+            for(int i = 0; i < stock1.getStockArticle().size(); i++)
             {
                 cells[i].getChildren().clear();
             }
@@ -235,7 +235,7 @@ public class ClientInterface extends Application {
                 cells[i].setAlignment(Pos.CENTER);
             }
 
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < stock1.getStockArticle().size(); i++) {
                 int column = i % 4;
                 int row = i / 4;
                 gridPane.add(cells[i], column, row);
@@ -249,7 +249,7 @@ public class ClientInterface extends Application {
         item4.setOnAction(event -> {
             System.out.println("Option 4 sélectionnée");
             gridPane.getChildren().clear();
-            for(int i = 0; i < 20; i++)
+            for(int i = 0; i < stock1.getStockArticle().size(); i++)
             {
                 cells[i].getChildren().clear();
             }
@@ -269,7 +269,7 @@ public class ClientInterface extends Application {
                 cells[i].setAlignment(Pos.CENTER);
             }
 
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < stock1.getStockArticle().size(); i++) {
                 int column = i % 4;
                 int row = i / 4;
                 gridPane.add(cells[i], column, row);

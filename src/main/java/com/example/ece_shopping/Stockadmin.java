@@ -32,6 +32,8 @@ public class    Stockadmin extends Application {
     {
         // Création d'un label avec le texte "Page Client"
         Label label = new Label("Page Client");
+
+
         int l = 0;
         Stock stock1 = new Stock(SQL.remplirStock());
 
@@ -43,13 +45,13 @@ public class    Stockadmin extends Application {
 
         VBox cell21 = new VBox();
 
-        Button[] plusbutton = new Button[20];
-        Button[] moinsbutton = new Button[20];
+        Button[] plusbutton = new Button[stock1.getStockArticle().size()];
+        Button[] moinsbutton = new Button[stock1.getStockArticle().size()];
 
-        ImageView[] imageViews = new ImageView[20];
-        Label[] nameLabels = new Label[20];
+        ImageView[] imageViews = new ImageView[stock1.getStockArticle().size()];
+        Label[] nameLabels = new Label[stock1.getStockArticle().size()];
         Label QTStock = new Label("Quantité en Stock : ");
-        VBox[] cells = new VBox[20];
+        VBox[] cells = new VBox[stock1.getStockArticle().size()];
 
 
         // Création de l'image du logo
@@ -94,10 +96,10 @@ public class    Stockadmin extends Application {
         newStage.setScene(scene);
         newStage.show();
 
-        Spinner<Integer>[] spinners = new Spinner[20];
+        Spinner<Integer>[] spinners = new Spinner[stock1.getStockArticle().size()];
         GridPane gridPane = new GridPane();
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < stock1.getStockArticle().size(); i++)
         {
             Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
             imageViews[i] = new ImageView(image);
@@ -134,7 +136,7 @@ public class    Stockadmin extends Application {
         gridPane.setTranslateY(30);
         gridPane.setTranslateX(90);
 
-        for (int j = 0; j < 20; j++) {
+        for (int j = 0; j < stock1.getStockArticle().size(); j++) {
             int column = j % 4;
             int row = j / 4;
             gridPane.add(cells[j], column, row);
