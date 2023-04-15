@@ -4,13 +4,8 @@ import java.util.*;
 
 public class UserSQL {
 
-    private static String motDePasse;
-    private static String nomUtilisateur;
 
-    public UserSQL(String nomUtilisateur, String motDePasse) {
-        this.nomUtilisateur = nomUtilisateur;
-        this.motDePasse = motDePasse;
-    }
+    private String nomUtilisateur;
     public static Connection connect() {
         Connection conn = null;
 
@@ -22,7 +17,7 @@ public class UserSQL {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             conn = DriverManager.getConnection(url, userName, password);
 
-            System.out.println("Connection à la base de données établie");
+            //System.out.println("Connection à la base de données établie");
 
         } catch (Exception e) {
 
@@ -57,7 +52,7 @@ public class UserSQL {
         return users;
     }
 
-   public static void ajouterUtilisateur(String nomUtilisateur, String motDePasse, boolean admin)
+    public static void ajouterUtilisateur(String nomUtilisateur, String motDePasse, boolean admin)
     {
         Connection conn = connect();
 
@@ -98,7 +93,6 @@ public class UserSQL {
 
         return false; // Si aucun utilisateur correspondant n'a été trouvé, retourner false
     }
-
     public static boolean authentifierUtilisateur(String nomUtilisateur, String motDePasse) {
         HashMap<String, String> users = getUsers();
         if (users.containsKey(nomUtilisateur) && users.get(nomUtilisateur).equals(motDePasse)) {
@@ -107,7 +101,6 @@ public class UserSQL {
             return false;
         }
     }
-
     public static boolean creerUtilisateur(String username, String password) {
         HashMap<String, String> users = getUsers();
         if (users.containsKey(username)) {
@@ -118,11 +111,12 @@ public class UserSQL {
         }
     }
 
-    public String getNomUtilisateur() {
-        return this.nomUtilisateur;
+    public void setNomUtilisateur(String nomUtilisateur) {
+        this.nomUtilisateur = nomUtilisateur;
     }
 
-    public  String getMotDePasse() {
-        return this.motDePasse;
+    public String getNomUtilisateur() {
+        return nomUtilisateur;
     }
+
 }

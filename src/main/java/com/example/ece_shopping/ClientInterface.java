@@ -19,7 +19,12 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
+import java.util.Arrays;
+
+
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Objects;
 
 
 public class ClientInterface extends Application {
@@ -52,7 +57,7 @@ public class ClientInterface extends Application {
 
         TextField searchField = new TextField();
         searchField.setPromptText("Rechercher...");
-        searchField.setPrefWidth(750);
+        searchField.setPrefWidth(800);
         searchField.setCenterShape(true);
         searchField.setTranslateY(35);
 
@@ -74,14 +79,10 @@ public class ClientInterface extends Application {
         filtreButton.getItems().addAll(item1, item2, item3, item4);
         filtreButton.setTranslateY(35);
 
-        // Création du bouton "Admin"
-        Button passeradmin = new Button("Admin");
-        passeradmin.setTranslateY(35);
-
         HBox topBox = new HBox();
         topBox.setPadding(new Insets(10));
         topBox.setSpacing(10);
-        topBox.getChildren().addAll(logoImageView, searchField, filtreButton, monCompteButton, cartButton, passeradmin);
+        topBox.getChildren().addAll(logoImageView, searchField, filtreButton, monCompteButton, cartButton);
 
         // Création d'un conteneur de type BorderPane pour organiser la mise en page
         BorderPane root = new BorderPane();
@@ -270,21 +271,58 @@ public class ClientInterface extends Application {
             }
         });
 
+        searchField.setOnAction(event -> {
+            String searchText = searchField.getText();
+            ArrayList<String> rechercheStock = new ArrayList<>();
+            System.out.println("Searching for: " + searchText);
+            for (Article article : stock1.getStockArticle()) {
+                if (article.getNom().toLowerCase().contains(searchText.toLowerCase())) {
+                    System.out.println(article.getNom());
+                    rechercheStock.add(article.getNom());
+                }
+            }
+            gridPane.getChildren().clear();
+            for(int i = 0; i < gridPane.getChildren().size(); i++)
+            {
+                cells[i].getChildren().clear();
+            }
+
+            int count = 0;
+            for (String articleNom : rechercheStock) {
+                for (int i = 0; i < stock1.getStockArticle().size(); i++) {
+                    if (stock1.getStockArticle().get(i).getNom().equals(articleNom)) {
+                        // Créer les nœuds correspondants pour l'article
+                        Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
+                        imageViews[count] = new ImageView(image);
+                        nameLabels[count] = new Label(stock1.getStockArticle().get(i).getNom());
+                        cartButtons[count] = new Button("Ajouter au panier");
+
+                        cells[count] = new VBox();
+                        cells[count].getChildren().addAll(imageViews[count], nameLabels[count], cartButtons[count]);
+                        cells[count].setAlignment(Pos.CENTER);
+
+                        // Ajouter les nœuds au conteneur gridPane
+                        int column = count % 4;
+                        int row = count / 4;
+                        gridPane.add(cells[count], column, row);
+
+                        // Mettre à jour le compteur pour accéder au prochain index de tableau
+                        count++;
+                    }
+                }
+            }
+
+            for (int i = 0; i < cartButtons.length; i++) {
+                int j = i;
+                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+            }
+
+        });
+
         for (int i = 0; i < cartButtons.length; i++) {
             int j = i;
             cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
         }
-
-        passeradmin.setOnAction(event -> {
-                    passeradmin Passeradmin = new passeradmin();
-                    try {
-                        Passeradmin.start(new Stage());
-                        primaryStage.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-
 
         ScrollPane scrollPane = new ScrollPane(gridPane);
         root.setCenter(scrollPane);

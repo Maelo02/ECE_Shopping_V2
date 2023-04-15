@@ -22,7 +22,6 @@ public class LoginInterface extends Application {
     private String utilisateur;
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         // Création des éléments de l'interface
         Label label_username = new Label("Nom d'utilisateur:");
         TextField field_username = new TextField();
@@ -36,14 +35,14 @@ public class LoginInterface extends Application {
 
 
         // Ajout d'un gestionnaire de clic pour le bouton de connexion
-            button_login.setOnAction(event -> {
+        button_login.setOnAction(event -> {
             String username = field_username.getText();
             utilisateur = username;
             String password = field_password.getText();
 
             if (UserSQL.authentifierUtilisateur(username, password)) {
                 System.out.println("Vous êtes connecté !");
-
+                //UserSQL.setNomUtilisateur(utilisateur);
                 if(UserSQL.isAdmin(utilisateur)) {
                     AdminInterface adminInterface = new AdminInterface();
                     try {
@@ -75,7 +74,7 @@ public class LoginInterface extends Application {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-
+            //System.out.println("Créer un compte");
         });
 
         // Création d'une grille pour organiser les éléments
