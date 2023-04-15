@@ -335,7 +335,7 @@ public class ClientInterface extends Application {
         }
 
         passeradmin.setOnAction(event -> {
-            passeradmin Passeradmin = new passeradmin();
+            passeradmin Passeradmin = new passeradmin(utilisateur,mdp);
             try {
                 Passeradmin.start(new Stage());
                 primaryStage.close();

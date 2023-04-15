@@ -17,6 +17,13 @@ import javafx.stage.Stage;
 
 public class passeradmin {
 
+    private String utilisateur;
+    private String mdp;
+
+    public passeradmin(String parametre1, String parametre2) {
+        this.utilisateur = parametre1;
+        this.mdp = parametre2;
+    }
     public void start(Stage primaryStage) {
 
         Stage newStage = new Stage();
@@ -27,7 +34,7 @@ public class passeradmin {
         Button button_retour = new Button("Retour");
 
         button_retour.setOnAction(event -> {
-            ClientInterface clientInterface = new ClientInterface("Compte client admin", "AMMP");
+            ClientInterface clientInterface = new ClientInterface(utilisateur, mdp);
             try {
                 clientInterface.start(new Stage());
                 primaryStage.close();
