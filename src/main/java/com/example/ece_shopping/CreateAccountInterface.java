@@ -43,7 +43,6 @@ public class CreateAccountInterface extends Application {
             if (password.equals(confirm_password)) {
                 if (UserSQL.creerUtilisateur(username, password)) {
                     System.out.println("Compte créé avec succès !");
-                    //UserSQL.setNomUtilisateur(username);
                     ClientInterface clientInterface = new ClientInterface();
                     try {
                         clientInterface.start(new Stage());
@@ -118,4 +117,5 @@ public class CreateAccountInterface extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
 }
