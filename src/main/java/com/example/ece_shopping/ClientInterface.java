@@ -64,7 +64,7 @@ public class ClientInterface extends Application {
 
         TextField searchField = new TextField();
         searchField.setPromptText("Rechercher...");
-        searchField.setPrefWidth(800);
+        searchField.setPrefWidth(750);
         searchField.setCenterShape(true);
         searchField.setTranslateY(35);
 
@@ -75,6 +75,10 @@ public class ClientInterface extends Application {
         // Création du bouton "Panier"
         Button cartButton = new Button("Panier");
         cartButton.setTranslateY(35);
+
+        // Création du bouton "Admin"
+        Button passeradmin = new Button("Admin");
+        passeradmin.setTranslateY(35);
 
         // Création du bouton avec un menu déroulant "Filtrer"
         SplitMenuButton filtreButton = new SplitMenuButton();
@@ -89,7 +93,7 @@ public class ClientInterface extends Application {
         HBox topBox = new HBox();
         topBox.setPadding(new Insets(10));
         topBox.setSpacing(10);
-        topBox.getChildren().addAll(logoImageView, searchField, filtreButton, monCompteButton, cartButton);
+        topBox.getChildren().addAll(logoImageView, searchField, filtreButton, monCompteButton, cartButton, passeradmin);
 
         // Création d'un conteneur de type BorderPane pour organiser la mise en page
         BorderPane root = new BorderPane();
@@ -329,6 +333,16 @@ public class ClientInterface extends Application {
             int j = i;
             cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
         }
+
+        passeradmin.setOnAction(event -> {
+            passeradmin Passeradmin = new passeradmin();
+            try {
+                Passeradmin.start(new Stage());
+                primaryStage.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         ScrollPane scrollPane = new ScrollPane(gridPane);
         root.setCenter(scrollPane);
