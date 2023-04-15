@@ -1,4 +1,4 @@
-package com.example.ece_shopping;
+package Model;
 
 import java.util.Date;
 

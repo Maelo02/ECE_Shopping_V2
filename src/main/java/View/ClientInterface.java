@@ -284,10 +284,10 @@ public class ClientInterface extends Application {
         searchField.setOnAction(event -> {
             String searchText = searchField.getText();
             ArrayList<String> rechercheStock = new ArrayList<>();
-            //System.out.println("Searching for: " + searchText);
+            System.out.println("Searching for: " + searchText);
             for (Article article : stock1.getStockArticle()) {
                 if (article.getNom().toLowerCase().contains(searchText.toLowerCase())) {
-                    //System.out.println(article.getNom());
+                    System.out.println(article.getNom());
                     rechercheStock.add(article.getNom());
                 }
             }
@@ -321,15 +321,11 @@ public class ClientInterface extends Application {
                     }
                 }
             }
-            for (int i = 0; i < rechercheStock.size(); i++) {
-                for (int k = 0; k < stock1.getStockArticle().size(); k++) {
-                    if (stock1.getStockArticle().get(k).getNom().equals(rechercheStock.get(i))) {
-                        int j = k;
-                        cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
-                    }
-                }
-            }
 
+            for (int i = 0; i < cartButtons.length; i++) {
+                int j = i;
+                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+            }
 
         });
 

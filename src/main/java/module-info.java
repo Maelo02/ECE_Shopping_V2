@@ -5,5 +5,10 @@ module com.example.ece_shopping {
 
 
     opens com.example.ece_shopping to javafx.fxml;
-    exports com.example.ece_shopping;
+    exports Controller;
+    opens Controller to javafx.fxml;
+    exports Model;
+    opens Model to javafx.fxml;
+    exports View;
+    opens View to javafx.fxml;
 }

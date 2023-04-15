@@ -1,11 +1,8 @@
-package com.example.ece_shopping;
-import java.util.ArrayList;
+package Controller;
 import java.util.HashMap;
-import java.util.Scanner;
+
+import View.LoginInterface;
 import javafx.application.Application;
-import javafx.stage.Stage;
-
-
 
 public class Main {
     public static void main(String[] args) {

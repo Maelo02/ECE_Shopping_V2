@@ -1,4 +1,4 @@
-package com.example.ece_shopping;
+package View;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

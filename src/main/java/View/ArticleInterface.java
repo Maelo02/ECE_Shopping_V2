@@ -1,5 +1,6 @@
-package com.example.ece_shopping;
+package View;
 
+import Model.Article;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -29,9 +30,16 @@ public class ArticleInterface extends Application {
         double prixBulk = article.getPrixBulk();
         int quantite = article.getQuantite();
         int quantiteBulk = article.getQuantiteBulk();
+        ImageView imageView = null;
 
         Image image = new Image("file:ressource/article_" + article.getId() + ".png");
-        ImageView imageView = new ImageView(image);
+        imageView = new ImageView(image);
+
+        if(imageView.getImage().isError())
+        {
+            Image image2 = new Image("file:ressource/Placeholder.png");
+            imageView = new ImageView(image2);
+        }
 
         //On crée une nouvelle fenêtre
         Stage newStage = new Stage();

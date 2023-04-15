@@ -1,5 +1,6 @@
-package com.example.ece_shopping;
+package View;
 
+import Controller.SQL;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -70,7 +71,6 @@ public class InterfaceAjoutArticle extends Application {
         grid.add(field_quantiteBulk, 1, 5);
         grid.add(label_id, 0, 6);
         grid.add(field_id, 1, 6);
-
         grid.add(button, 1, 7);
         grid.add(button_retour, 0, 7);
 

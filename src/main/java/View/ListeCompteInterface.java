@@ -1,5 +1,6 @@
-package com.example.ece_shopping;
+package View;
 
+import Controller.UserSQL;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
