@@ -1,5 +1,7 @@
-package com.example.ece_shopping;
+package Controller;
 import java.util.HashMap;
+
+import View.LoginInterface;
 import javafx.application.Application;
 
 public class Main {

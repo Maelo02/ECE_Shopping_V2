@@ -1,4 +1,7 @@
-package com.example.ece_shopping;
+package Controller;
+
+import Model.Article;
+import Model.Commande;
 
 import java.sql.*;
 import java.util.*;

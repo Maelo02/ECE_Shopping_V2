@@ -1,5 +1,7 @@
-package com.example.ece_shopping;
+package Controller;
 
+import Controller.SQL;
+import Model.Stock;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

@@ -1,4 +1,7 @@
-package com.example.ece_shopping;
+package Model;
+
+import Controller.SQL;
+import Model.Commande;
 
 import java.sql.Date;
 import java.util.ArrayList;

@@ -1,5 +1,6 @@
-package com.example.ece_shopping;
+package View;
 
+import Model.Article;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

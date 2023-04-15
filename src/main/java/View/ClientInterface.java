@@ -1,5 +1,8 @@
-package com.example.ece_shopping;
+package View;
 
+import Controller.SQL;
+import Model.Article;
+import Model.Stock;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -20,12 +23,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 
-import java.util.Arrays;
-
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Objects;
 
 
 public class ClientInterface extends Application {
@@ -368,7 +368,7 @@ public class ClientInterface extends Application {
         }
 
         passeradmin.setOnAction(event -> {
-            passeradmin Passeradmin = new passeradmin(utilisateur, mdp);
+            View.passeradmin Passeradmin = new passeradmin(utilisateur, mdp);
             try {
                 Passeradmin.start(new Stage());
                 primaryStage.close();
