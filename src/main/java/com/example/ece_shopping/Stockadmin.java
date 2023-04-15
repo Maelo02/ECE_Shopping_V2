@@ -112,22 +112,20 @@ public class    Stockadmin extends Application {
             cells[i].setAlignment(Pos.CENTER);
 
             int finalI = i;
+
             plusbutton[i].setOnAction(event -> {
                 SQL.ajoutQuantite(stock1.getStockArticle().get(finalI).getId());
-                //gridPane.getChildren().clear();
-                cells[finalI].getChildren().clear();
-                cells[finalI].getChildren().addAll(imageViews[finalI], nameLabels[finalI]/*, QTStock*/, plusbutton[finalI], moinsbutton[finalI]);
-                cells[finalI].setAlignment(Pos.CENTER);
+                voirstock();
+                newStage.close();
             });
 
             moinsbutton[i].setOnAction(event -> {
                 SQL.retirQuantite(stock1.getStockArticle().get(finalI).getId());
-
-                cells[finalI].getChildren().clear();
-                cells[finalI].getChildren().addAll(imageViews[finalI], nameLabels[finalI]/*, QTStock*/, plusbutton[finalI], moinsbutton[finalI]);
-                cells[finalI].setAlignment(Pos.CENTER);
+                voirstock();
+                newStage.close();
             });
         }
+
 
         cell21.getChildren().addAll(nameLabel211, nameLabel212, nameLabel213);
 
