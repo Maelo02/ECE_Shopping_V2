@@ -23,6 +23,10 @@ public class ArticleInterface extends Application {
 
     }
 
+    /**
+     * Fonction d'affichage d'un article
+     * @param article
+     */
     public static void afficherArticle(Article article,Panier panier)
     {
         //On récupère les informations de l'article
@@ -33,6 +37,7 @@ public class ArticleInterface extends Application {
         int quantiteBulk = article.getQuantiteBulk();
         ImageView imageView = null;
 
+        //On récupère l'image de l'article
         Image image = new Image("file:ressource/article_" + article.getId() + ".png");
         imageView = new ImageView(image);
 
@@ -51,6 +56,7 @@ public class ArticleInterface extends Application {
 
         Button plusUn = new Button("+1");
 
+        //On ajoute l'article au panier
         plusUn.setOnAction(e -> {
             System.out.println("Ajout de l'article " + article.getNom() + " au panier");
             panier.ajouterArticle(article);
@@ -58,6 +64,7 @@ public class ArticleInterface extends Application {
 
         Button moinsUn = new Button("-1");
 
+        //On retire l'article du panier
         moinsUn.setOnAction(e -> {
             System.out.println("Retrait de l'article " + article.getNom() + " du panier");
             if(panier.getPanierArticle().contains(article)&&article.getArticlePanier()>1)

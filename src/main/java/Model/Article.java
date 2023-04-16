@@ -69,7 +69,7 @@ public class Article {
     {
         if(getArticlePanier()>= getQuantiteBulk())
         {
-            return (getQuantiteBulk() * getPrixBulk());
+            return (getArticlePanier() * getPrixBulk());
         }
         else
         {

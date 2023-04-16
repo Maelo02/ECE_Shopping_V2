@@ -31,11 +31,20 @@ public class ClientInterface extends Application {
     private String utilisateur;
     private String mdp;
 
+    /**
+     * Constructeur de la classe ClientInterface
+     *
+     * @param parametre1 le nom d'utilisateur
+     * @param parametre2 le mot de passe
+     */
     public ClientInterface(String parametre1, String parametre2) {
         this.utilisateur = parametre1;
         this.mdp = parametre2;
     }
 
+    /**
+     * Méthode qui permet d'afficher la page client
+     */
     @Override
     public void start(Stage primaryStage) {
 

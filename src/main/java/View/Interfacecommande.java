@@ -30,6 +30,11 @@ public class Interfacecommande extends Application {
 
     }
 
+    /**
+     * Fonction d'affichage de la page de commande
+     * @param panier
+     * @param username
+     */
     public static void commande( Panier panier, String username) {
 
                 ArrayList<Article> panierArticle = panier.getPanierArticle();

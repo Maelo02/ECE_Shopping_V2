@@ -23,6 +23,10 @@ public class passeradmin {
         this.utilisateur = parametre1;
         this.mdp = parametre2;
     }
+
+    /**
+     * Fonction d'affichage pour passer de la page admin à la page client
+     */
     public void start(Stage primaryStage) {
 
         Stage newStage = new Stage();
@@ -70,7 +74,6 @@ public class passeradmin {
             }
         });
 
-
         // Création d'une grille pour organiser les éléments
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -85,7 +88,6 @@ public class passeradmin {
 
         // Ajout du logo et du label du nom d'utilisateur dans un conteneur HBox
         GridPane.setMargin(hbLogo, new Insets(-120, 0, 0, 0));
-
 
         grid.add(label_password, 0, 1);
         grid.add(field_password, 1, 1);
@@ -106,7 +108,6 @@ public class passeradmin {
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getVisualBounds();
         Scene scene = new Scene(root, 600, 400);
-
 
         // Configuration de la fenêtre principale
         primaryStage.setTitle("Passer admin : ");

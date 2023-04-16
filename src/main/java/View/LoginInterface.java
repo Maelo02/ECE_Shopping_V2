@@ -20,6 +20,11 @@ import javafx.scene.image.ImageView;
 public class LoginInterface extends Application {
     private String utilisateur;
     @Override
+    /**
+     * Fonction de lancement de l'interface de connexion
+     * @param primaryStage
+     * @throws Exception
+     */
     public void start(Stage primaryStage) throws Exception {
         // Création des éléments de l'interface
         Label label_username = new Label("Nom d'utilisateur:");

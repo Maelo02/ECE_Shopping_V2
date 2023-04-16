@@ -21,6 +21,11 @@ import javafx.stage.Stage;
 public class CreateAccountInterface extends Application {
     private String username;
     @Override
+    /**
+     * Fonction de lancement de l'interface de création de compte
+     * @param primaryStage
+     * @throws Exception
+     */
     public void start(Stage primaryStage) throws Exception {
         // Création des éléments de l'interface
         Label label_username = new Label("Nom d'utilisateur:");

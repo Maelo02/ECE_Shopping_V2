@@ -16,6 +16,10 @@ import javafx.stage.Stage;
 public class AdminInterface extends Application {
 
     @Override
+    /**
+     * Affichage de l'interface administateur
+     * @param primaryStage
+     */
     public void start(Stage primaryStage) {
 
         // Création d'un label avec le texte "Page Admin"
@@ -49,6 +53,7 @@ public class AdminInterface extends Application {
         root.setBottom(buttonBox);
         BorderPane.setAlignment(logoImageView, Pos.TOP_CENTER);
 
+        // Création des actions des boutons
         listeDesComptes.setOnAction(e -> ListeCompteInterface.afficherListeDesComptes());
         stockButton.setOnAction(e -> Stockadmin.voirstock());
         commandeButton.setOnAction(e -> ListeCommandeInterface.afficherListeDeCommandes());

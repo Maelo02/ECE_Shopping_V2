@@ -20,6 +20,10 @@ public class InterfaceAjoutArticle extends Application {
 
     public void start(Stage primaryStage) {
     }
+
+    /**
+     * Fonction d'affichage de la page d'ajout d'article
+     */
     public static void ajouterarticle()
     {
         // Création d'un label avec le texte "Page Admin"
@@ -74,6 +78,7 @@ public class InterfaceAjoutArticle extends Application {
         grid.add(button, 1, 7);
         grid.add(button_retour, 0, 7);
 
+        //On ajoute un article à la base de données
         button.setOnAction(event -> {
             String nomF = field_nom.getText();
             double prix = Double.parseDouble(field_prix.getText());
@@ -90,6 +95,7 @@ public class InterfaceAjoutArticle extends Application {
             field_quantite.clear();
             field_quantiteBulk.clear();
             field_id.clear();
+            newStage.close();
         });
 
         // Créer une mise en page (layout) pour le champ de texte

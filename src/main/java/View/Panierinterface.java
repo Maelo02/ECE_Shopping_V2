@@ -123,7 +123,11 @@ public class Panierinterface extends Application {
         if(panierArticle.size() == 0) {
             button_achat.setDisable(true);
         }
-        button_achat.setOnAction(e -> Interfacecommande.commande(panier, username));
+
+        button_achat.setOnAction(event -> {
+            Interfacecommande.commande(panier, username);
+            newStage.close();
+        });
 
         StackPane root = new StackPane();
         root.getChildren().add(grid);

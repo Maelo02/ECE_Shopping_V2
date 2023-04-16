@@ -21,6 +21,10 @@ public class MonCompteclient {
 
     public void start(Stage primaryStage) {
     }
+
+    /**
+     * Fonction d'affichage de la page d'ajout d'article
+     */
     public static void infoclient(String nom,String mdp) {
 
         ListeCommande commande1 = new ListeCommande(SQL.remplirCommande());

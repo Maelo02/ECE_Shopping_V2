@@ -21,6 +21,9 @@ public class ListeCommandeInterface extends Application {
     public void start(Stage primaryStage) {
     }
 
+    /**
+     * Fonction d'affichage de la liste des commandes
+     */
     public static void afficherListeDeCommandes() {
 
         ListeCommande commande1 = new ListeCommande(SQL.remplirCommande());

@@ -19,6 +19,9 @@ public class ListeCompteInterface extends Application {
     public void start(Stage primaryStage) {
     }
 
+    /**
+     * Fonction d'affichage de la page de liste des comptes
+     */
     public static void afficherListeDesComptes()
     {
         HashMap<String, String> users = UserSQL.getUsers();
