@@ -61,9 +61,6 @@ public class Interfacecommande extends Application {
                 grid.setAlignment(Pos.CENTER);
                 grid.add(label, 0, 0);
 
-
-
-
                 for (Article article : panierArticle) {
                     prixTotalCommande += article.calculPrix();
                 }
