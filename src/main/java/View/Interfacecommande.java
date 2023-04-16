@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -44,6 +45,10 @@ public class Interfacecommande extends Application {
                 Label label = new Label("Commande :");
                 Label Ncommande = new Label("N° de commande : ");
                 Label Narticle = new Label("Nombre d'article : ");
+                Label label_adresse = new Label("Adresse :");
+                Label label_ville = new Label("Ville :");
+                TextField field_adresse = new TextField();
+                TextField field_ville = new TextField();
 
                 Random random = new Random();
                 int NumCommande = random.nextInt(8999) + 1000;
@@ -67,10 +72,14 @@ public class Interfacecommande extends Application {
                 Ncommande.setText(Ncommande.getText() + (NumCommande)+ "");
                 Narticle.setText(Narticle.getText() + (panierArticle.size())+ "");
                 grid.add(Ncommande, 0, 1);
-                grid.add(label_prixTotalPanier, 0, panierArticle.size() + 2);
-                grid.add(Narticle, 0, panierArticle.size() + 3);
-                grid.add(button, 0, panierArticle.size() + 4);
-                grid.add(button_achat, 1, panierArticle.size() + 4);
+                grid.add(label_prixTotalPanier, 0, 2);
+                grid.add(Narticle, 0, 3);
+                grid.add(label_adresse, 0, 4);
+                grid.add(field_adresse, 1, 4);
+                grid.add(label_ville, 0, 5);
+                grid.add(field_ville, 1, 5);
+                grid.add(button, 0, panierArticle.size() + 6);
+                grid.add(button_achat, 1, panierArticle.size() + 6);
 
                 StackPane root = new StackPane();
                 root.getChildren().add(grid);
