@@ -66,7 +66,6 @@ public class ListeCommandeInterface extends Application {
         label_nombre.setFont(new Font("Arial", 18));
         label_total.setFont(new Font("Arial", 18));
 
-
         grid.add(label_numero, 0, 0);
         grid.add(label_date, 1, 0);
         grid.add(label_user, 2, 0);
