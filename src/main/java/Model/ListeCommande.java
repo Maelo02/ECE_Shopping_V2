@@ -26,10 +26,12 @@ public class ListeCommande {
         System.out.println("utilisateur : " + getListeCommande().get(i).getUtilisateur());
         System.out.println("nombre d'articles : " + getListeCommande().get(i).getNombre_articles());
         System.out.println("prix total : " + getListeCommande().get(i).getPrix_total());
+        System.out.println("adresse : " + getListeCommande().get(i).getAdresse());
+        System.out.println("ville : " + getListeCommande().get(i).getVille());
     }
 
-    public void ajouterCommande(int numero_commande, Date date, String utilisateur, int nombre_articles, float prix_total) {
-        Commande nouvelleCommande = new Commande(numero_commande, date, utilisateur, nombre_articles, prix_total);
+    public void ajouterCommande(int numero_commande, Date date, String utilisateur, int nombre_articles, float prix_total, String adresse, String ville){
+        Commande nouvelleCommande = new Commande(numero_commande, date, utilisateur, nombre_articles, prix_total, adresse, ville);
         SQL.ajouterCommandeSQL(nouvelleCommande);
         listeCommande.add(nouvelleCommande);
     }

@@ -42,6 +42,8 @@ public class MonCompteclient {
         Label labelClient = new Label("Client");
         Label labelNbProduits = new Label("Nombre de produits");
         Label labelTotal = new Label("Total");
+        Label labelAdresse = new Label("Adresse");
+        Label labelVille = new Label("Ville");
 
         HBox hbox = new HBox();
         hbox.setAlignment(Pos.CENTER);
@@ -58,23 +60,29 @@ public class MonCompteclient {
         for (int i = 0; i < commande1.getListeCommande().size(); i++) {
             if(commande1.getListeCommande().get(i).getUtilisateur().equals(nom)) {
                 if(j==0){
-                    grid.add(labelNumCommande, 0, 3);
-                    grid.add(labelDateCommande, 1, 3);
-                    grid.add(labelClient, 2, 3);
-                    grid.add(labelNbProduits, 3, 3);
-                    grid.add(labelTotal, 4, 3);
+                    grid.add(labelNumCommande, 0, 4);
+                    grid.add(labelDateCommande, 1, 4);
+                    grid.add(labelClient, 2, 4);
+                    grid.add(labelNbProduits, 3, 4);
+                    grid.add(labelTotal, 4, 4);
+                    grid.add(labelAdresse, 5, 4);
+                    grid.add(labelVille, 6, 4);
                 }
                 Label labelNumCommandeValue = new Label(String.valueOf(commande1.getListeCommande().get(i).getNumero()));
                 Label labelDateCommandeValue = new Label(commande1.getListeCommande().get(i).getDate().toString());
                 Label labelClientValue = new Label(commande1.getListeCommande().get(i).getUtilisateur());
                 Label labelNbProduitsValue = new Label(String.valueOf(commande1.getListeCommande().get(i).getNombre_articles()));
                 Label labelTotalValue = new Label(String.valueOf(commande1.getListeCommande().get(i).getPrix_total()));
+                Label labelAdresseValue = new Label(String.valueOf(commande1.getListeCommande().get(i).getAdresse()));
+                Label labelVilleValue = new Label(String.valueOf(commande1.getListeCommande().get(i).getVille()));
 
-                grid.add(labelNumCommandeValue, 0, j + 5);
-                grid.add(labelDateCommandeValue, 1, j + 5);
-                grid.add(labelClientValue, 2, j + 5);
-                grid.add(labelNbProduitsValue, 3, j + 5);
-                grid.add(labelTotalValue, 4, j + 5);
+                grid.add(labelNumCommandeValue, 0, j + 6);
+                grid.add(labelDateCommandeValue, 1, j + 6);
+                grid.add(labelClientValue, 2, j + 6);
+                grid.add(labelNbProduitsValue, 3, j + 6);
+                grid.add(labelTotalValue, 4, j + 6);
+                grid.add(labelAdresseValue, 5, j + 6);
+                grid.add(labelVilleValue, 6, j + 6);
                 j++;
             }
         }
@@ -106,7 +114,7 @@ public class MonCompteclient {
 
         Stage newStage = new Stage();
         Button button_retour = new Button("Retour");
-        grid.add(button_retour, 0, j+6);
+        grid.add(button_retour, 0, j+7);
         button_retour.setOnAction(e -> newStage.close());
 
         newStage.setScene(newScene);
@@ -114,3 +122,4 @@ public class MonCompteclient {
     }
 
 }
+

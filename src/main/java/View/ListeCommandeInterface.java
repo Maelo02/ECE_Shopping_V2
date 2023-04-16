@@ -45,7 +45,9 @@ public class ListeCommandeInterface extends Application {
                     ", Date : " + commande1.getListeCommande().get(i).getDate() +
                     ", Client : " + commande1.getListeCommande().get(i).getUtilisateur() +
                     ", Nombre de produits : " + commande1.getListeCommande().get(i).getNombre_articles() +
-                    ", Total : " + commande1.getListeCommande().get(i).getPrix_total());
+                    ", Total : " + commande1.getListeCommande().get(i).getPrix_total() +
+                    ", Adresse : " + commande1.getListeCommande().get(i).getAdresse() +
+                    ", Ville : " + commande1.getListeCommande().get(i).getVille());
         }
 
         GridPane grid = new GridPane();
@@ -59,29 +61,39 @@ public class ListeCommandeInterface extends Application {
         Label label_user = new Label("Client");
         Label label_nombre = new Label("Nombre de produits");
         Label label_total = new Label("Total");
+        Label label_adresse = new Label("Adresse");
+        Label label_ville = new Label("Ville");
 
         label_numero.setFont(new Font("Arial", 18));
         label_date.setFont(new Font("Arial", 18));
         label_user.setFont(new Font("Arial", 18));
         label_nombre.setFont(new Font("Arial", 18));
         label_total.setFont(new Font("Arial", 18));
+        label_adresse.setFont(new Font("Arial", 18));
+        label_ville.setFont(new Font("Arial", 18));
 
         grid.add(label_numero, 0, 0);
         grid.add(label_date, 1, 0);
         grid.add(label_user, 2, 0);
         grid.add(label_nombre, 3, 0);
         grid.add(label_total, 4, 0);
+        grid.add(label_adresse, 5, 0);
+        grid.add(label_ville, 6, 0);
 
         Label label_espace = new Label(" ");
         Label label_espace2 = new Label(" ");
         Label label_espace3 = new Label(" ");
         Label label_espace4 = new Label(" ");
         Label label_espace5 = new Label(" ");
+        Label label_espace6 = new Label(" ");
+        Label label_espace7 = new Label(" ");
         grid.add(label_espace, 0, 1);
         grid.add(label_espace2, 1, 1);
         grid.add(label_espace3, 2, 1);
         grid.add(label_espace4, 3, 1);
         grid.add(label_espace5, 4, 1);
+        grid.add(label_espace6, 5, 1);
+        grid.add(label_espace7, 6, 1);
 
         for (int i = 0; i < commande1.getListeCommande().size(); i++) {
 
@@ -90,17 +102,23 @@ public class ListeCommandeInterface extends Application {
             String user = commande1.getListeCommande().get(i).getUtilisateur();
             int nombre = commande1.getListeCommande().get(i).getNombre_articles();
             float total = commande1.getListeCommande().get(i).getPrix_total();
+            String adresse = commande1.getListeCommande().get(i).getAdresse();
+            String ville = commande1.getListeCommande().get(i).getVille();
 
             Label label_numero2 = new Label(Integer.toString(numero));
             Label label_date2 = new Label(date.toString());
             Label label_user2 = new Label(user);
             Label label_nombre2 = new Label(Integer.toString(nombre));
             Label label_total2 = new Label(Float.toString(total));
+            Label label_adresse2 = new Label(adresse);
+            Label label_ville2 = new Label(ville);
             grid.add(label_numero2, 0, i + 2);
             grid.add(label_date2, 1, i + 2);
             grid.add(label_user2, 2, i + 2);
             grid.add(label_nombre2, 3, i + 2);
             grid.add(label_total2, 4, i + 2);
+            grid.add(label_adresse2, 5, i + 2);
+            grid.add(label_ville2, 6, i + 2);
         }
 
         grid.add(button_retour, 0, commande1.getListeCommande().size() + 2);

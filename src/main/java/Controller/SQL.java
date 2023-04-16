@@ -78,7 +78,7 @@ public class SQL {
              ResultSet rs = stmt.executeQuery("SELECT * FROM commande")) {
 
             while (rs.next()) {
-                Commande commande = new Commande(rs.getInt("numero_commande"),rs.getDate("date"), rs.getString("utilisateur"), rs.getInt("nombre_articles"), rs.getFloat("prix_total"));
+                Commande commande = new Commande(rs.getInt("numero_commande"),rs.getDate("date"), rs.getString("utilisateur"), rs.getInt("nombre_articles"), rs.getFloat("prix_total"), rs.getString("adresse"), rs.getString("ville"));
                 commandeRempli.add(commande);
             }
 
@@ -93,12 +93,14 @@ public class SQL {
 
     public static void ajouterCommandeSQL(Commande commande) {
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/commande", "root", "root")) {
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO commande (numero_commande, date, utilisateur, nombre_articles, prix_total) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO commande (numero_commande, date, utilisateur, nombre_articles, prix_total, adresse, ville) VALUES (?, ?, ?, ?, ?, ?, ?)");
             pstmt.setInt(1, commande.getNumero());
             pstmt.setDate(2, commande.getDate());
             pstmt.setString(3, commande.getUtilisateur());
             pstmt.setInt(4, commande.getNombre_articles());
             pstmt.setFloat(5, commande.getPrix_total());
+            pstmt.setString(6, commande.getAdresse());
+            pstmt.setString(7, commande.getVille());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

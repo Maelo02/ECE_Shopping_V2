@@ -2,6 +2,7 @@ package View;
 
 import Controller.Main;
 import Model.Article;
+import Model.Commande;
 import Model.Panier;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -56,13 +57,9 @@ public class Interfacecommande extends Application {
                 Label label_prixTotalPanier = new Label("Prix total de la commande : ");
                 double prixTotalCommande = 0;
 
-
                 GridPane grid = new GridPane();
                 grid.setAlignment(Pos.CENTER);
                 grid.add(label, 0, 0);
-
-
-
 
                 for (Article article : panierArticle) {
                     prixTotalCommande += article.calculPrix();
@@ -80,6 +77,8 @@ public class Interfacecommande extends Application {
                 grid.add(field_ville, 1, 5);
                 grid.add(button, 0, panierArticle.size() + 6);
                 grid.add(button_achat, 1, panierArticle.size() + 6);
+
+
 
                 StackPane root = new StackPane();
                 root.getChildren().add(grid);
