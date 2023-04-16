@@ -52,7 +52,7 @@ public class AdminInterface extends Application {
 
         listeDesComptes.setOnAction(e -> ListeCompteInterface.afficherListeDesComptes());
         stockButton.setOnAction(e -> Stockadmin.voirstock());
-        //commandeButton.setOnAction(e -> Commandeadmin.affichercommande());
+        commandeButton.setOnAction(e -> ListeCommandeInterface.afficherListeDeCommandes());
         ajouterarticle.setOnAction(e -> InterfaceAjoutArticle.ajouterarticle());
 
         compteclient.setOnAction(e -> {

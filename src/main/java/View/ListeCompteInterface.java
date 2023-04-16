@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
@@ -35,6 +36,9 @@ public class ListeCompteInterface extends Application {
         grid.setAlignment(Pos.CENTER);
         Label label_username = new Label("Nom d'utilisateur:");
         Label label_password = new Label("Mot de passe:");
+        label_username.setFont(new Font("Arial", 18));
+        label_password.setFont(new Font("Arial", 18));
+
 
         grid.add(label_username, 0, 0);
         grid.add(label_password, 1, 0);
