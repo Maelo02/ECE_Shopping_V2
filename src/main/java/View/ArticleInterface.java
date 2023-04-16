@@ -61,7 +61,14 @@ public class ArticleInterface extends Application {
 
         moinsUn.setOnAction(e -> {
             System.out.println("Retrait de l'article " + article.getNom() + " du panier");
-            panier.suppArticle(article);
+            if(panier.getPanierArticle().contains(article)&&article.getArticlePanier()>1)
+            {
+                article.setArticlePanier(article.getArticlePanier()-1);
+            }
+            else
+            {
+                panier.suppArticle(article);
+            }
         });
 
         //On crée les labels et les textes
