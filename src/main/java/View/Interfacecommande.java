@@ -1,26 +1,22 @@
 package View;
 
-import Controller.Main;
+import Model.ListeCommande;
+
 import Model.Article;
 import Model.Panier;
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import java.util.Random;
+import java.sql.Date;
 
 import java.util.ArrayList;
 
@@ -54,16 +50,14 @@ public class Interfacecommande extends Application {
                 int NumCommande = random.nextInt(8999) + 1000;
 
                 Label label_prixTotalPanier = new Label("Prix total de la commande : ");
-                double prixTotalCommande = 0;
+                float prixTotalCommande;
 
 
                 GridPane grid = new GridPane();
                 grid.setAlignment(Pos.CENTER);
                 grid.add(label, 0, 0);
 
-                for (Article article : panierArticle) {
-                    prixTotalCommande += article.calculPrix();
-                }
+                prixTotalCommande = (float) panierArticle.stream().mapToDouble(Article::calculPrix).sum();
 
                 label_prixTotalPanier.setText(label_prixTotalPanier.getText() + (prixTotalCommande)+ "");
                 Ncommande.setText(Ncommande.getText() + (NumCommande)+ "");
@@ -84,6 +78,16 @@ public class Interfacecommande extends Application {
                 Screen screen = Screen.getPrimary();
                 Rectangle2D bounds = screen.getVisualBounds();
                 Scene newScene = new Scene(root, bounds.getWidth() * 0.8, bounds.getHeight() * 0.8); //80% de la taille de l'écran
+
+                Date dateActuelle = new Date(System.currentTimeMillis());
+
+                String nom = "nom";
+
+                button_achat.setOnAction(e -> {
+                    //Commande nouvelleCommande = new Commande(numero_commande, date, utilisateur, nombre_articles, prix_total, adresse, ville);
+                    ListeCommande.ajouterCommande(NumCommande,dateActuelle ,nom,panierArticle.size(),prixTotalCommande,field_adresse.getText(),field_ville.getText());
+                    newStage.close();
+                });
 
                 newStage.setTitle("Commande");
                 newStage.setScene(newScene);

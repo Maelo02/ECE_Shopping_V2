@@ -1,4 +1,4 @@
-package Controller;
+package View;
 
 import Controller.SQL;
 import Model.Stock;
@@ -26,6 +26,10 @@ public class Stockadmin extends Application {
 
     }
 
+    /**
+     * Fonction d'affichage, et de gestion du stock pour l'administrateur
+     *
+     */
     public static void voirstock() {
         // Création d'un label avec le texte "Page Client"
         Label label = new Label("Page Client");

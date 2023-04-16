@@ -20,8 +20,4 @@ public class Panier {
     public ArrayList<Article> getPanierArticle() {
         return panierArticle;
     }
-
-    public void setPanierArticle(ArrayList<Article> panierArticle) {
-        this.panierArticle = panierArticle;
-    }
 }

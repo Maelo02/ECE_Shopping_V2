@@ -1,9 +1,6 @@
 package View;
 
 import Controller.UserSQL;
-import View.AdminInterface;
-import View.ClientInterface;
-import View.CreateAccountInterface;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,9 +16,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;import javafx.scene.layout.VBox;
-
-
 
 public class LoginInterface extends Application {
     private String utilisateur;

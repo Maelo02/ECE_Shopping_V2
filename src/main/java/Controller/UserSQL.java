@@ -5,7 +5,11 @@ import java.util.*;
 public class UserSQL {
 
 
-    private String nomUtilisateur;
+
+    /**
+     * Fonction de connexion à la base de données pour les utilisateurs
+     * renvoie une connexion
+     */
     public static Connection connect() {
         Connection conn = null;
 
@@ -17,8 +21,6 @@ public class UserSQL {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             conn = DriverManager.getConnection(url, userName, password);
 
-            //System.out.println("Connection à la base de données établie");
-
         } catch (Exception e) {
 
             System.err.println("Impossible de se connecter à la base de données");
@@ -27,6 +29,10 @@ public class UserSQL {
         return conn;
     }
 
+    /**
+     * Fonction de récupération des utilisateurs de la base de données
+     * renvoie un HashMap avec les utilisateurs et leurs mots de passe
+     */
     public static HashMap<String, String> getUsers()
     {
         HashMap<String, String> users = new HashMap<String, String>();
@@ -52,6 +58,12 @@ public class UserSQL {
         return users;
     }
 
+    /**
+     * Fonction d'ajout d'un utilisateur dans la base de données
+     * @param nomUtilisateur le nom de l'utilisateur
+     * @param motDePasse le mot de passe de l'utilisateur
+     * @param admin si l'utilisateur est administrateur ou non
+     */
     public static void ajouterUtilisateur(String nomUtilisateur, String motDePasse, boolean admin)
     {
         Connection conn = connect();
@@ -71,6 +83,10 @@ public class UserSQL {
         }
     }
 
+    /**
+     * Fonction de verification de droit d'administrateur
+     * @param username le nom de l'utilisateur
+     */
     public static boolean isAdmin(String username) {
         Connection conn = connect();
 
@@ -93,6 +109,12 @@ public class UserSQL {
 
         return false; // Si aucun utilisateur correspondant n'a été trouvé, retourner false
     }
+
+    /**
+     * Fonction de vérification de l'authentification d'un utilisateur
+     * @param nomUtilisateur le nom de l'utilisateur
+     * @param motDePasse le mot de passe de l'utilisateur
+     */
     public static boolean authentifierUtilisateur(String nomUtilisateur, String motDePasse) {
         HashMap<String, String> users = getUsers();
         if (users.containsKey(nomUtilisateur) && users.get(nomUtilisateur).equals(motDePasse)) {
@@ -101,6 +123,12 @@ public class UserSQL {
             return false;
         }
     }
+
+    /**
+     * Fonction de création d'un utilisateur
+     * @param username le nom de l'utilisateur
+     * @param password le mot de passe de l'utilisateur
+     */
     public static boolean creerUtilisateur(String username, String password) {
         HashMap<String, String> users = getUsers();
         if (users.containsKey(username)) {
@@ -110,13 +138,4 @@ public class UserSQL {
             return true;
         }
     }
-
-    public void setNomUtilisateur(String nomUtilisateur) {
-        this.nomUtilisateur = nomUtilisateur;
-    }
-
-    public String getNomUtilisateur() {
-        return nomUtilisateur;
-    }
-
 }

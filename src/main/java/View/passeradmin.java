@@ -1,7 +1,5 @@
 package View;
 
-import View.AdminInterface;
-import View.ClientInterface;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -114,9 +112,6 @@ public class passeradmin {
         primaryStage.setTitle("Passer admin : ");
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
-    // test pole
 
     }
 }

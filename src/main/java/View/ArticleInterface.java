@@ -1,6 +1,5 @@
 package View;
 
-import Controller.Main;
 import Model.Article;
 import Model.Panier;
 import javafx.application.Application;

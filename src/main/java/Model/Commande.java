@@ -1,6 +1,6 @@
 package Model;
 
-import java.util.Date;
+import java.sql.Date;
 
 
 public class Commande {
@@ -12,6 +12,16 @@ public class Commande {
     private String adresse;
     private String ville;
 
+    /**
+     * Constructeur de la classe Commande
+     * @param numero son numéro
+     * @param date sa date
+     * @param utilisateur son utilisateur
+     * @param nombre_articles son nombre d'articles
+     * @param prix_total son prix total
+     * @param adresse son adresse
+     * @param ville sa ville
+     */
     public Commande(int numero, Date date, String utilisateur, int nombre_articles, float prix_total, String adresse, String ville) {
         this.numero = numero;
         this.date = date;

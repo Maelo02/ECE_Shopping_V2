@@ -8,9 +8,17 @@ public class Article {
     private int quantite;
     private String nom;
     private long id;
-
     private int articlePanier;
 
+    /**
+     * Constructeur de la classe Article
+     * @param id son id
+     * @param nom son nom
+     * @param prix son prix
+     * @param prixBulk son prix en gros
+     * @param quantiteBulk sa quantité en gros
+     * @param quantite sa quantité dans le panier
+     */
     public Article(long id, String nom, double prix, double prixBulk, int quantiteBulk, int quantite) {
         this.id = id;
         this.nom = nom;
@@ -53,6 +61,10 @@ public class Article {
         this.articlePanier = articlePanier;
     }
 
+    /**
+     * Fonction de calcul du prix de l'article
+     * @return le prix des articles
+     */
     public double calculPrix()
     {
         if(getArticlePanier()>= getQuantiteBulk())
@@ -64,5 +76,4 @@ public class Article {
             return getArticlePanier() * getPrix();
         }
     }
-
 }

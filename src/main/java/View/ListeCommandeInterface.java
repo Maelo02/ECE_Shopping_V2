@@ -1,7 +1,6 @@
 package View;
 
 import Controller.SQL;
-import Controller.UserSQL;
 import Model.ListeCommande;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -10,19 +9,12 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 public class ListeCommandeInterface extends Application {
 

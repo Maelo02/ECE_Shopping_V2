@@ -23,11 +23,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
-
-
 import java.util.ArrayList;
 import java.util.Comparator;
-
 
 public class ClientInterface extends Application {
 
