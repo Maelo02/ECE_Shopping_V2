@@ -23,7 +23,7 @@ public class Panierinterface extends Application {
 
     }
 
-    public static void panierAfficher(Panier panier) {
+    public static void panierAfficher(Panier panier, String username){
 
         ArrayList<Article> panierArticle = panier.getPanierArticle();
 
@@ -123,7 +123,7 @@ public class Panierinterface extends Application {
         if(panierArticle.size() == 0) {
             button_achat.setDisable(true);
         }
-        button_achat.setOnAction(e -> Interfacecommande.commande(panier));
+        button_achat.setOnAction(e -> Interfacecommande.commande(panier, username));
 
         StackPane root = new StackPane();
         root.getChildren().add(grid);

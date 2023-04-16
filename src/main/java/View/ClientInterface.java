@@ -79,7 +79,7 @@ public class ClientInterface extends Application {
         panierBouton.setTranslateY(35);
 
         panierBouton.setOnAction(event -> {
-          Panierinterface.panierAfficher(panier);
+          Panierinterface.panierAfficher(panier, utilisateur);
         });
 
         // Création du bouton "Admin"

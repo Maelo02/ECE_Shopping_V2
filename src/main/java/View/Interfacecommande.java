@@ -1,5 +1,6 @@
 package View;
 
+import Controller.UserSQL;
 import Model.ListeCommande;
 
 import Model.Article;
@@ -15,6 +16,8 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
+
+import java.util.HashMap;
 import java.util.Random;
 import java.sql.Date;
 
@@ -27,7 +30,7 @@ public class Interfacecommande extends Application {
 
     }
 
-    public static void commande( Panier panier) {
+    public static void commande( Panier panier, String username) {
 
                 ArrayList<Article> panierArticle = panier.getPanierArticle();
 
@@ -81,11 +84,11 @@ public class Interfacecommande extends Application {
 
                 Date dateActuelle = new Date(System.currentTimeMillis());
 
-                String nom = "nom";
+                HashMap<String, String> users = UserSQL.getUsers();
+
 
                 button_achat.setOnAction(e -> {
-                    //Commande nouvelleCommande = new Commande(numero_commande, date, utilisateur, nombre_articles, prix_total, adresse, ville);
-                    ListeCommande.ajouterCommande(NumCommande,dateActuelle ,nom,panierArticle.size(),prixTotalCommande,field_adresse.getText(),field_ville.getText());
+                    ListeCommande.ajouterCommande(NumCommande,dateActuelle, username,panierArticle.size(),prixTotalCommande,field_adresse.getText(),field_ville.getText());
                     newStage.close();
                 });
 
