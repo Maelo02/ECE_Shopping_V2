@@ -9,6 +9,8 @@ public class Article {
     private String nom;
     private long id;
 
+    private int articlePanier;
+
     public Article(long id, String nom, double prix, double prixBulk, int quantiteBulk, int quantite) {
         this.id = id;
         this.nom = nom;
@@ -16,6 +18,7 @@ public class Article {
         this.prixBulk = prixBulk;
         this.quantiteBulk = quantiteBulk;
         this.quantite = quantite;
+        this.articlePanier = 1;
     }
 
     public double getPrix() {
@@ -42,27 +45,24 @@ public class Article {
         return id;
     }
 
-    public void setQuantite(int quantite) {
-        this.quantite = quantite;
+    public int getArticlePanier() {
+        return articlePanier;
+    }
+
+    public void setArticlePanier(int articlePanier) {
+        this.articlePanier = articlePanier;
     }
 
     public double calculPrix()
     {
-        int difference;
-
-        if(getQuantite()>= getQuantiteBulk())
+        if(getArticlePanier()>= getQuantiteBulk())
         {
-            difference = getQuantite() - getQuantiteBulk();
-            return (getQuantiteBulk() * getPrixBulk()) + (difference * getPrix());
+            return (getQuantiteBulk() * getPrixBulk());
         }
         else
         {
-            return getQuantite() * getPrix();
+            return getArticlePanier() * getPrix();
         }
-    }
-    public void ajouterPanier()
-    {
-        setQuantite(getQuantite() + 1);
     }
 
 }

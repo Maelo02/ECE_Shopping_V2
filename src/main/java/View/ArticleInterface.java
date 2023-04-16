@@ -1,6 +1,8 @@
 package View;
 
+import Controller.Main;
 import Model.Article;
+import Model.Panier;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -22,7 +24,7 @@ public class ArticleInterface extends Application {
 
     }
 
-    public static void afficherArticle(Article article)
+    public static void afficherArticle(Article article,Panier panier)
     {
         //On récupère les informations de l'article
         String nom = article.getNom();
@@ -49,7 +51,18 @@ public class ArticleInterface extends Application {
         retourButton.setOnAction(e -> newStage.close());
 
         Button plusUn = new Button("+1");
+
+        plusUn.setOnAction(e -> {
+            System.out.println("Ajout de l'article " + article.getNom() + " au panier");
+            panier.ajouterArticle(article);
+        });
+
         Button moinsUn = new Button("-1");
+
+        moinsUn.setOnAction(e -> {
+            System.out.println("Retrait de l'article " + article.getNom() + " du panier");
+            panier.suppArticle(article);
+        });
 
         //On crée les labels et les textes
         Label label_nom = new Label("Nom de l'article :");

@@ -1,5 +1,6 @@
 package Controller;
 import java.util.HashMap;
+import Model.Panier;
 
 import View.LoginInterface;
 import javafx.application.Application;

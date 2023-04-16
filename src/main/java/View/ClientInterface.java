@@ -3,6 +3,7 @@ package View;
 import Controller.SQL;
 import Model.Article;
 import Model.Stock;
+import Model.Panier;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -41,6 +42,8 @@ public class ClientInterface extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+        Panier panier = new Panier();
+
         // Création d'un label avec le texte "Page Client"
         Label label = new Label("Page Client");
         Stock stock1 = new Stock(SQL.remplirStock());
@@ -75,8 +78,12 @@ public class ClientInterface extends Application {
         monCompteButton.setTranslateY(35);
 
         // Création du bouton "Panier"
-        Button cartButton = new Button("Panier");
-        cartButton.setTranslateY(35);
+        Button panierBouton = new Button("Panier");
+        panierBouton.setTranslateY(35);
+
+        panierBouton.setOnAction(event -> {
+          Panierinterface.panierAfficher(panier);
+        });
 
         // Création du bouton "Admin"
         Button passeradmin = new Button("Admin");
@@ -95,7 +102,7 @@ public class ClientInterface extends Application {
         HBox topBox = new HBox();
         topBox.setPadding(new Insets(10));
         topBox.setSpacing(10);
-        topBox.getChildren().addAll(logoImageView, searchField, filtreButton, monCompteButton, cartButton, passeradmin);
+        topBox.getChildren().addAll(logoImageView, searchField, filtreButton, monCompteButton, panierBouton, passeradmin);
 
         // Création d'un conteneur de type BorderPane pour organiser la mise en page
         BorderPane root = new BorderPane();
@@ -182,7 +189,7 @@ public class ClientInterface extends Application {
             for (int i = 0; i < cartButtons.length; i++) {
                 int j = i;
 
-                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j),panier));
 
             }
         });
@@ -223,7 +230,7 @@ public class ClientInterface extends Application {
             for (int i = 0; i < cartButtons.length; i++) {
                 int j = i;
 
-                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j),panier));
 
             }
         });
@@ -262,7 +269,7 @@ public class ClientInterface extends Application {
             for (int i = 0; i < cartButtons.length; i++) {
                 int j = i;
 
-                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j),panier));
 
             }
         });
@@ -302,7 +309,7 @@ public class ClientInterface extends Application {
             for (int i = 0; i < cartButtons.length; i++) {
                 int j = i;
 
-                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+                cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j),panier));
 
             }
         });
@@ -356,7 +363,7 @@ public class ClientInterface extends Application {
                 for (int k = 0; k < stock1.getStockArticle().size(); k++) {
                     if (stock1.getStockArticle().get(k).getNom().equals(rechercheStock.get(i))) {
                         int j = k;
-                        cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+                        cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j),panier));
                     }
                 }
             }
@@ -365,7 +372,7 @@ public class ClientInterface extends Application {
         for (int i = 0; i < cartButtons.length; i++) {
             int j = i;
 
-            cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j)));
+            cartButtons[i].setOnAction(e -> ArticleInterface.afficherArticle(stock1.getStockArticle().get(j),panier));
 
         }
 

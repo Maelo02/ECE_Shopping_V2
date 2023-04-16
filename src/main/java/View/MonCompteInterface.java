@@ -37,14 +37,6 @@ public class MonCompteInterface extends Application {
             imagelogo.setCenter(Pageadmin);
             BorderPane.setAlignment(logoImageView, Pos.TOP_CENTER);
 
-           // String field_user = UserSQL.getNomUtilisateur();
-           // String field_mdp = UserSQL.getMotDePasse();
-
-            //System.out.println(field_user);
-            //System.out.println(field_mdp);
-
-            // String field_user = UserSQL.getUsers();
-            // String field_mdp = password;
             Label label_nom = new Label("Nom d'utilisateur :");
             Label label_prix = new Label("Mot De Passe :");
 
@@ -62,9 +54,7 @@ public class MonCompteInterface extends Application {
             grid.add(hbox, 0, 0, 2, 1);
 
             grid.add(label_nom, 0, 1);
-            // grid.add(field_user, 1, 1);
             grid.add(label_prix, 0, 2);
-            // grid.add(field_mdp, 1, 2);
 
             Stage newStage = new Stage();
 
