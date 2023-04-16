@@ -93,6 +93,8 @@ public class Panierinterface extends Application {
         grid.add(button, 0, panierArticle.size() + 3);
         grid.add(button_achat, 1, panierArticle.size() + 3);
 
+        button_achat.setOnAction(e -> Interfacecommande.commande(panier));
+
         StackPane root = new StackPane();
         root.getChildren().add(grid);
 
