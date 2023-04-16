@@ -14,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -48,6 +49,15 @@ public class MonCompteclient {
         Label labelTotal = new Label("Total");
         Label labelAdresse = new Label("Adresse");
         Label labelVille = new Label("Ville");
+        label_username.setFont(new Font("Arial", 16));
+        label_password.setFont(new Font("Arial", 16));
+        labelNumCommande.setFont(new Font("Arial", 16));
+        labelDateCommande.setFont(new Font("Arial", 16));
+        labelClient.setFont(new Font("Arial", 16));
+        labelNbProduits.setFont(new Font("Arial", 16));
+        labelTotal.setFont(new Font("Arial", 16));
+        labelAdresse.setFont(new Font("Arial", 16));
+        labelVille.setFont(new Font("Arial", 16));
 
         HBox hbox = new HBox();
         hbox.setAlignment(Pos.CENTER);
