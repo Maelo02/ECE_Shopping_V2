@@ -317,10 +317,8 @@ public class ClientInterface extends Application {
         searchField.setOnAction(event -> {
             String searchText = searchField.getText();
             ArrayList<String> rechercheStock = new ArrayList<>();
-            //System.out.println("Searching for: " + searchText);
             for (Article article : stock1.getStockArticle()) {
                 if (article.getNom().toLowerCase().contains(searchText.toLowerCase())) {
-                    //System.out.println(article.getNom());
                     rechercheStock.add(article.getNom());
                 }
             }
@@ -337,9 +335,9 @@ public class ClientInterface extends Application {
                         Image image = new Image("file:ressource/article_" + stock1.getStockArticle().get(i).getId() + ".png");
                         imageViews[count] = new ImageView(image);
 
-                        if (imageViews[i].getImage().isError()) {
+                        if (imageViews[count].getImage().isError()) {
                             Image image2 = new Image("file:ressource/Placeholder.png");
-                            imageViews[i] = new ImageView(image2);
+                            imageViews[count] = new ImageView(image2);
                         }
                         nameLabels[count] = new Label(stock1.getStockArticle().get(i).getNom());
                         cartButtons[count] = new Button("Ajouter au panier");
