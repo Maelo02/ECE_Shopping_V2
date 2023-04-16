@@ -19,6 +19,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;import javafx.scene.layout.VBox;
 
 
 
@@ -34,8 +35,8 @@ public class LoginInterface extends Application {
         Button button_login = new Button("Se connecter");
         Button button_signup = new Button("Créer un compte");
         ImageView logo = new ImageView("file:ressource/logo.png");
-        logo.setFitWidth(140);
-        logo.setFitHeight(100);
+        logo.setFitWidth(280);
+        logo.setFitHeight(200);
 
 
         // Ajout d'un gestionnaire de clic pour le bouton de connexion
@@ -88,8 +89,11 @@ public class LoginInterface extends Application {
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
         HBox hbLogo = new HBox(10);
-        hbLogo.setAlignment(Pos.TOP_LEFT);
+        hbLogo.setAlignment(Pos.CENTER);
+        hbLogo.setMargin(logo, new Insets(-200, 0, 0, 0));
         hbLogo.getChildren().addAll(logo);
+
+
 
         grid.add(hbLogo, 0, 0, 2, 1);
 
