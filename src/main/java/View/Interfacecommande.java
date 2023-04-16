@@ -50,6 +50,16 @@ public class Interfacecommande extends Application {
                 TextField field_adresse = new TextField();
                 TextField field_ville = new TextField();
 
+                ImageView logo = new ImageView("file:ressource/logo.png");
+                logo.setFitWidth(280);
+                logo.setFitHeight(200);
+
+
+                HBox hbLogo = new HBox(10);
+                hbLogo.setAlignment(Pos.CENTER);
+                hbLogo.setMargin(logo, new Insets(-350, 0, 0, 0));
+                hbLogo.getChildren().addAll(logo);
+
                 Random random = new Random();
                 int NumCommande = random.nextInt(8999) + 1000;
 
@@ -60,10 +70,10 @@ public class Interfacecommande extends Application {
                 GridPane grid = new GridPane();
                 grid.setAlignment(Pos.CENTER);
                 grid.add(label, 0, 0);
+                grid.setStyle("-fx-font-size: 16px;");
 
 
-
-
+                grid.add(hbLogo, 0, 0, 2, 1);
                 for (Article article : panierArticle) {
                     prixTotalCommande += article.calculPrix();
                 }
