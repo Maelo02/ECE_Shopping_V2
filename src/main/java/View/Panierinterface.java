@@ -14,6 +14,27 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.Scene;
 
+import java.util.ArrayList;import Model.Article;
+import Model.Panier;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
+import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import java.util.Random;
+
 import java.util.ArrayList;
 
 public class Panierinterface extends Application {
@@ -55,6 +76,16 @@ public class Panierinterface extends Application {
         Label label_prixTotal = new Label("Prix total");
         Label label_prixTotalPanier = new Label("Prix total du panier : ");
 
+        ImageView logo = new ImageView("file:ressource/logo.png");
+        logo.setFitWidth(280);
+        logo.setFitHeight(200);
+
+
+        HBox hbLogo = new HBox(10);
+        hbLogo.setMargin(logo, new Insets(-350, -250, 0, 0));
+        hbLogo.setAlignment(Pos.CENTER);
+        hbLogo.getChildren().addAll(logo);
+
         Label labelEspace1 = new Label(" ");
         Label labelEspace2 = new Label(" ");
         Label labelEspace3 = new Label(" ");
@@ -78,6 +109,7 @@ public class Panierinterface extends Application {
 
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
+        grid.setStyle("-fx-font-size: 16px;");
         grid.add(label, 0, 0);
         grid.add(labelEspace2, 0, 1);
         grid.add(label_article, 0, 2);
@@ -86,6 +118,7 @@ public class Panierinterface extends Application {
         grid.add(label_prixBulk, 3, 2);
         grid.add(label_prixTotal, 4, 2);
         grid.add(labelEspace1, 0, 3);
+        grid.add(hbLogo, 0, 0, 2, 1);
 
         for(int i = 0; i < panierArticle.size(); i++) {
             grid.add(label_articleNom[i], 0, i + 4);
